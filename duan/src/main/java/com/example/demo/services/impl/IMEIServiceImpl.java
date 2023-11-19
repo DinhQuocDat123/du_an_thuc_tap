@@ -36,6 +36,11 @@ public class IMEIServiceImpl implements IMEIService {
     }
 
     @Override
+    public List<IMEI> searchOnBanHang(String imei, UUID id) {
+        return imeiRepository.searchIMEIBanHang(imei, id);
+    }
+
+    @Override
     public List<IMEI> searchOff(String imei) {
         return imeiRepository.searchIMEIOff(imei);
     }

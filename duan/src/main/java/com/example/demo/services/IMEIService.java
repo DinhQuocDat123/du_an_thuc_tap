@@ -15,6 +15,8 @@ public interface IMEIService {
 
     public List<IMEI> searchOn(String imei);
 
+    public List<IMEI> searchOnBanHang(String imei,UUID id);
+
     public List<IMEI> searchOff(String imei);
 
     public List<IMEI> searchOff2(String imei);

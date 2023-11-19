@@ -215,7 +215,6 @@
 
 <!-- HEADER -->
 <header>
-    <!-- TOP HEADER -->
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
@@ -242,18 +241,23 @@
                                                value="${idkhachhang}">
                                     </span>
                             </a>
-                            <div class="cart-dropdown" style="border-radius: 10px;width: 3.5cm;margin-top: 10px">
+                            <div class="cart-dropdown"
+                                 style="border-radius: 10px;width: 3.5cm;margin-top: 10px;width: 180px">
                                 <div>
                                     <div>
-                                        Tài khoản của tôi
-                                    </div>
+                                        <form action="/thong-tin-ca-nhan-khach-hang" method="post" style="display: none">
+                                            <input value="${idkhachhang}" name="idKhachHang" style="display: none">
+                                            <button style="" class="btn btn-primary" type="submit" id="taikhoancuatoi">Tài khoản của tôi</button>
+                                        </form>
+                                        <a  class="btn btn-primary" type="submit" onclick="anbt()">Tài khoản của tôi</a>
 
-                                    <form action="/ban-hang-online/hoa-don-online" method="post">
-                                        <input name="idkh" value="${idkhachhang}" style="display: none">
-                                        <button type="submit">Đơn hàng</button>
-                                    </form>
+                                    </div>
                                     <div>
-                                        Đăng xuất
+                                        <a href="/ban-hang-online/hoa-don-online/${idkhachhang}"
+                                           class="btn btn-primary">Đơn hàng</a>
+                                    </div>
+                                    <div>
+                                        <a href="/logout" class="btn btn-primary" style="" onclick="">Đăng xuất</a>
                                     </div>
                                 </div>
                             </div>
@@ -721,6 +725,11 @@
     }
 
 
+</script>
+<script>
+    function anbt() {
+        document.getElementById('taikhoancuatoi').click();
+    }
 </script>
 <!-- jQuery Plugins -->
 <script src="/jsbanhang/jquery.min.js"></script>

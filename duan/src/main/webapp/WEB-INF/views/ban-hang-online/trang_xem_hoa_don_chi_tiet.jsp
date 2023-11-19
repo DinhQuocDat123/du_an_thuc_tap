@@ -139,7 +139,6 @@
 <body>
 <!-- HEADER -->
 <header>
-    <!-- TOP HEADER -->
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
@@ -170,7 +169,12 @@
                                  style="border-radius: 10px;width: 3.5cm;margin-top: 10px;width: 180px">
                                 <div>
                                     <div>
-                                        <a href="#" class="btn btn-primary">Tài khoản của tôi</a>
+                                        <form action="/thong-tin-ca-nhan-khach-hang" method="post" style="display: none">
+                                            <input value="${idkhachhang}" name="idKhachHang" style="display: none">
+                                            <button style="" class="btn btn-primary" type="submit" id="taikhoancuatoi">Tài khoản của tôi</button>
+                                        </form>
+                                        <a  class="btn btn-primary" type="submit" onclick="anbt()">Tài khoản của tôi</a>
+
                                     </div>
                                     <div>
                                         <a href="/ban-hang-online/hoa-don-online/${idkhachhang}"
@@ -1076,6 +1080,11 @@
     loadSelect2diachi();
 
 
+</script>
+<script>
+    function anbt() {
+        document.getElementById('taikhoancuatoi').click();
+    }
 </script>
 <!-- jQuery Plugins -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>

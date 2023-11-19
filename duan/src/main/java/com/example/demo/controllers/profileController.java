@@ -108,10 +108,7 @@ public class profileController {
             @ModelAttribute("kh") KhachHang khachHang
 
     ){
-
-
          idkhachhang = String.valueOf(khachHangService.findById(idkh).getId());
-
         return "redirect:/thong-tin-ca-nhan-khach-hang";
     }
 

@@ -7,155 +7,162 @@
 <head>
 
     <%--phan trang--%>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-        <title>Thanh toán</title>
-        <%--căn đều--%>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"/>
+    <title>Thanh toán</title>
+    <%--căn đều--%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"/>
 
 
-        <!-- Google font -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-        <!-- Bootstrap -->
-        <link type="text/css" rel="stylesheet" href="/cssbanhang/bootstrap.min.css"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="/cssbanhang/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!-- Google font -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-        <!-- Slick -->
-        <link type="text/css" rel="stylesheet" href="/cssbanhang/slick.css"/>
-        <link type="text/css" rel="stylesheet" href="/cssbanhang/slick-theme.css"/>
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="/cssbanhang/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="/cssbanhang/slick-theme.css"/>
 
-        <!-- nouislider -->
-        <link type="text/css" rel="stylesheet" href="/cssbanhang/nouislider.min.css"/>
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="/cssbanhang/nouislider.min.css"/>
 
-        <!-- Font Awesome Icon -->
-        <link rel="stylesheet" href="/cssbanhang/font-awesome.min.css">
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="/cssbanhang/font-awesome.min.css">
 
-        <!-- Custom stlylesheet -->
-        <link type="text/css" rel="stylesheet" href="/cssbanhang/style.css"/>
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="/cssbanhang/style.css"/>
 
-        <%--    select 2--%>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
-
+    <%--    select 2--%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
 
         <style>
-            /* CSS cho modal */
-            #myModal {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000; /* Đặt giá trị z-index lớn */
+            /* CSS để thiết lập chiều dài và chiều cao của dropdown select2 */
+            .select2-container--bootstrap-5 .select2-selection--single {
+                /*width: 5cm !important; !* Thiết lập chiều dài là 5cm *!*/
+                height: 1cm !important;
+                font-size: 14px;
+              padding-top: 7px;
             }
-
-            .modal-content {
-                background-color: #fff;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            }
-
-            #myModal {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000; /* Đặt giá trị z-index lớn */
-            }
-
-            .modal-content {
-                background-color: #fff;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            }
-
-            /*div{*/
-            /*    border: 1px solid red;*/
-            /*}*/
-            .input-with-button {
-                display: flex; /* Sử dụng flexbox để căn chỉnh nút bên trong input */
-                border: 1px solid #ccc; /* Tạo đường viền xung quanh hộp tìm kiếm */
-                border-radius: 25px; /* Đặt bán kính tròn cho hộp tìm kiếm */
-                overflow: hidden; /* Loại bỏ nút nếu nó bị tràn ra ngoài hộp */
-            }
-
-            .input-with-button input {
-                flex: 1; /* Làm cho input mở rộng để lấp đầy hộp */
-                border: none; /* Loại bỏ đường viền của input */
-                padding: 10px; /* Đặt khoảng cách nội dung bên trong input */
-                outline: none; /* Loại bỏ đường viền khi focus vào input */
-            }
-
-            .input-with-button button {
-                background: #007bff; /* Màu nền của nút */
-                color: #fff; /* Màu chữ trắng */
-                border: none; /* Loại bỏ đường viền của nút */
-                padding: 10px 20px; /* Đặt khoảng cách nội dung bên trong nút */
-                cursor: pointer; /* Biến con trỏ thành bàn tay khi trỏ vào nút */
-            }
-
-            .cart-dropdown {
-                border-radius: 10px;
-                width: 180px;
-                background-color: #fff;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-                padding: 10px;
-                margin-top: 10px;
-            }
-
-            .cart-dropdown a {
-                display: block;
-                width: 100%;
-                padding: 10px;
-                text-decoration: none;
-                text-align: center;
-                color: #fff;
-                background-color: #007bff;
-                margin-bottom: 10px;
-            }
-
-            .cart-dropdown a:hover {
-                background-color: #0056b3;
-            }
-
-            /*div{*/
-            /*    border: 1px solid red;*/
-            /*}*/
         </style>
+        <style>
+        /* CSS cho modal */
+        #myModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; /* Đặt giá trị z-index lớn */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #myModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; /* Đặt giá trị z-index lớn */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /*div{*/
+        /*    border: 1px solid red;*/
+        /*}*/
+        .input-with-button {
+            display: flex; /* Sử dụng flexbox để căn chỉnh nút bên trong input */
+            border: 1px solid #ccc; /* Tạo đường viền xung quanh hộp tìm kiếm */
+            border-radius: 25px; /* Đặt bán kính tròn cho hộp tìm kiếm */
+            overflow: hidden; /* Loại bỏ nút nếu nó bị tràn ra ngoài hộp */
+        }
+
+        .input-with-button input {
+            flex: 1; /* Làm cho input mở rộng để lấp đầy hộp */
+            border: none; /* Loại bỏ đường viền của input */
+            padding: 10px; /* Đặt khoảng cách nội dung bên trong input */
+            outline: none; /* Loại bỏ đường viền khi focus vào input */
+        }
+
+        .input-with-button button {
+            background: #007bff; /* Màu nền của nút */
+            color: #fff; /* Màu chữ trắng */
+            border: none; /* Loại bỏ đường viền của nút */
+            padding: 10px 20px; /* Đặt khoảng cách nội dung bên trong nút */
+            cursor: pointer; /* Biến con trỏ thành bàn tay khi trỏ vào nút */
+        }
+
+        .cart-dropdown {
+            border-radius: 10px;
+            width: 180px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .cart-dropdown a {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            background-color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .cart-dropdown a:hover {
+            background-color: #0056b3;
+        }
+
+        /*div{*/
+        /*    border: 1px solid red;*/
+        /*}*/
+    </style>
 
 </head>
 
 <body>
 <!-- HEADER -->
 <header>
-    <!-- TOP HEADER -->
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
@@ -186,10 +193,19 @@
                                  style="border-radius: 10px;width: 3.5cm;margin-top: 10px;width: 180px">
                                 <div>
                                     <div>
-                                        <a href="#" class="btn btn-primary">Tài khoản của tôi</a>
+                                        <form action="/thong-tin-ca-nhan-khach-hang" method="post"
+                                              style="display: none">
+                                            <input value="${idkhachhang}" name="idKhachHang" style="display: none">
+                                            <button style="" class="btn btn-primary" type="submit" id="taikhoancuatoi">
+                                                Tài khoản của tôi
+                                            </button>
+                                        </form>
+                                        <a class="btn btn-primary" type="submit" onclick="anbt()">Tài khoản của tôi</a>
+
                                     </div>
                                     <div>
-                                        <a href="/ban-hang-online/hoa-don-online/${idkhachhang}" class="btn btn-primary">Đơn hàng</a>
+                                        <a href="/ban-hang-online/hoa-don-online/${idkhachhang}"
+                                           class="btn btn-primary">Đơn hàng</a>
                                     </div>
                                     <div>
                                         <a href="/logout" class="btn btn-primary" style="" onclick="">Đăng xuất</a>
@@ -214,7 +230,8 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <h2 class="logo" style="margin: 20px;color: white;font-family: 'Times New Roman'">GPhoneS Store</h2>
+                        <h2 class="logo" style="margin: 20px;color: white;font-family: 'Times New Roman'">GPhoneS
+                            Store</h2>
                     </div>
                 </div>
                 <!-- /LOGO -->
@@ -378,142 +395,131 @@
 <!-- /NAVIGATION -->
 
 <main id="content">
-    <div style="width: 75%;margin-left: 12.5%; ">
+
+    <div class="section">
+        <!-- container -->
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 85%;margin-left: 7.5%;">
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-md-6">
+                    <!-- Billing Details -->
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">Thanh toán</h3>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="first-name"
+                                   value="${listghct.get(0).gioHang.khachHang.hoTen}" placeholder="First Name" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="input" type="email" value="${listghct.get(0).gioHang.khachHang.email}"
+                                   name="email" placeholder="Email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" id="sodienthoai1" type="tel" name="tel"
+                                   value="${listghct.get(0).gioHang.khachHang.sdt}"
+                                   placeholder="Telephone">
+                        </div>
+                        <button style="float: right" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#modalthemdiachidathang">Thêm địa chỉ
+                        </button>
+
+                        <select class="form-control" id="diachids1" style="width: 80%; height: 30cm;">
+                            <c:forEach
+                                    items="${banhangonline.Listdiachimotkhachang(listghct.get(0).gioHang.khachHang.id)}"
+                                    var="ht">
+                                <option value="${ht.id}">${ht.diaChi} - ${ht.quan} - ${ht.huyen}
+                                    - ${ht.thanhPho}</option>
+                            </c:forEach>
+                        </select>
 
 
-        <P>Địa chỉ nhận hàng</P>
+                    </div>
 
-        <p>Số điện thoại:<label style="background: white;color: red;border: 1px solid white" id="sodienthoai"></label>
-        </p>
-        <input type="text" value="${listghct.get(0).gioHang.khachHang.sdt}" style="width: 97%" id="sodienthoai1">
-
-        <P>Địa chỉ:</P><label style="background: white;color: red;border: 1px solid white" id="thongbaodiachi"></label>
-        <div>
-            <button style="float: right" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modalthemdiachidathang">Thêm địa chỉ
-            </button>
-            <select class="form-control" id="diachids1" style="width: 85%">
-                <c:forEach items="${banhangonline.Listdiachimotkhachang(listghct.get(0).gioHang.khachHang.id)}"
-                           var="ht">
-                    <option value="${ht.id}">quận:${ht.quan},huyện:${ht.huyen},thành phố:${ht.thanhPho}</option>
-                </c:forEach>
-            </select>
-        </div>
-
-
-        <div style="margin-top: 2cm">
-            <div style="width: 70%;float: right">
-                <P>Danh sách sản phẩm</P><br>
-                <table class="table table-borderless">
-                    <thead>
-                    <tr>
-
-                        <th>Ảnh</th>
-                        <th>Sản Phẩm</th>
-                        <th>Đơn Giá</th>
-                        <th>Số lượng</th>
-                        <th>Số tiền</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${listghct}" var="ht" varStatus="stt">
-                        <tr>
-
-                            <td>
-                                <img src="../../../uploads/${ht.chiTietSanPham.urlAnh}" width="40" height="40"
-                                     style="border-radius:50% 50% 50% 50%">
-                            </td>
-                            <td>
-                                    ${ht.chiTietSanPham.sanPham.ten},${ht.chiTietSanPham.sanPham.hangSanPham.ten},${ht.chiTietSanPham.sanPham.camera.thongSo},${ht.chiTietSanPham.sanPham.manHinh.thongSo},<br>
-                                    ${ht.chiTietSanPham.mauSac.ten},${ht.chiTietSanPham.ram.dungLuong},${ht.chiTietSanPham.rom.dungLuong},<br>
-                                    ${ht.chiTietSanPham.pin.loaiPin},${ht.chiTietSanPham.pin.dungLuongPin.thongSo},${ht.chiTietSanPham.chip.ten}.
-                            </td>
-                            <td>
-                                <div name="checkdongiakhigiam">${ht.donGiaKhiGiam}</div>
-                                đ-
-                                <del class="product-old-price">${ht.donGia}</del>
-                                đ
-
-                            </td>
-                            <td>
-                                    ${ht.soLuong}
-                            </td>
-                            <td>
-                                <div name="checkthanhtien">${ht.donGiaKhiGiam*ht.soLuong}</div>
-                                vnd
-                            </td>
-
-
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-            <div style="width: 25%">
-                <P>Thông tin khách hàng</P>
-                <br><br>
-                <img src="../../../uploads/${listghct.get(0).gioHang.khachHang.anh}" width="100" height="100"
-                     style="border-radius:50% 50% 50% 50%;margin-left: 2cm">
-                <p>Người mua:</p>
-                <input type="text" value="${listghct.get(0).gioHang.khachHang.hoTen}" disabled style="width: 97%">
-                <p>Email:</p>
-                <input type="text" value="${listghct.get(0).gioHang.khachHang.email}" disabled style="width: 97%">
-                <p>Số điện thoại:</p>
-                <input type="text" value="${listghct.get(0).gioHang.khachHang.sdt}" disabled style="width: 97%">
-                <p>Hạng khách hàng:</p>
-                <input type="text" value="${listghct.get(0).gioHang.khachHang.hangKhachHang.ten}" disabled
-                       style="width: 97%">
-            </div>
-        </div>
-        <br><br>
-
-        <div style="width: 40%;float: right">
-            <div>
-                <div id="tongsanphamchon" style="float: right">
-                    ${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongsanphamchon()}
-                </div>
-                <div style="float: right">Bạn đã chọn :</div>
-            </div>
-
-            <br><br>
-
-            <div>
-                <div style="float: right">VND</div>
-                <div id="tongthanhtien" style="float: right;margin-right: 10px">
-                    ${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongtien()}
                 </div>
 
-                <div style="float: right">Tổng tiền :</div>
+                <!-- Order Details -->
+                <div class="col-md-6 order-details">
+                    <div class="section-title text-center">
+                        <h3 class="title">Sản Phẩm</h3>
+                    </div>
+                    <div class="order-summary">
+                        <div class="order-col">
+                            <div><strong>Sản phẩm</strong></div>
+
+                            <div><strong>Thành tiền</strong></div>
+                        </div>
+                        <c:forEach items="${listghct}" var="ht" varStatus="stt">
+                            <div class="order-products">
+                                <div class="order-col">
+                                    <div><img src="/uploads/${ht.chiTietSanPham.urlAnh}" height="50px" width="50px">
+                                    </div>
+                                    <div> ${ht.chiTietSanPham.sanPham.ten}
+                                        - ${ht.chiTietSanPham.mauSac.ten} - ${ht.chiTietSanPham.ram.dungLuong}
+                                        - ${ht.chiTietSanPham.rom.dungLuong}</div>
+                                    <div>${ht.donGiaKhiGiam*ht.soLuong}</div>
+                                </div>
+
+                            </div>
+                        </c:forEach>
+                        <div class="order-col">
+                            <div><strong>Số lượng sản phẩm chọn</strong></div>
+                            <div id="tongsanphamchon">
+                                <strong
+                                        class="order-total" style="color: black">
+                                    ${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongsanphamchon()}
+
+                                </strong>
+                            </div>
+
+                        </div>
+                        <div class="order-col">
+                            <div><strong>Tổng tiền</strong></div>
+                            <div id="tongthanhtien">
+                                <strong
+                                        class="order-total"> ${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongtien()}
+                                </strong>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <%--                    <button type="button" style="width: 100%" class="primary-btn order-submit"--%>
+                    <%--                            onclick="nutdathang('${listghct.get(0).gioHang.id}')">Đặt hàng--%>
+                    <%--                    </button>--%>
+                    <form action="/ban-hang-online/san-pham-duoc-chon-thanh-toan/nut-dat-hang" method="post">
+                        <div style="display: none">
+                            <input id="idgh1" name="idgh1">
+                            <input id="tongtien1" name="tongtien1">
+                            <input id="iddc1" name="iddc1">
+                            <input id="sdt1" name="sdt1">
+                        </div>
+                        <input type="checkbox" id="checkBox"> Tôi đã đọc và đồng ý với <a style="text-decoration-line: underline"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#modalChinhSach">chính sách
+                        của cửa hàng</a>
+                        <%--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalChinhSach">--%>
+                        <%--                            Launch demo modal--%>
+                        <%--                        </button>--%>
+                        <%--                        <a data-bs-toggle="modal"--%>
+                        <%--                           data-bs-target="#modalthemdiachidathang">a</a>--%>
+
+
+                        <button class="primary-btn order-submit" style="float: right ; display: none" type="button"
+                                id="nutdathangthanhtoan" onclick="nutdathang('${listghct.get(0).gioHang.id}')">Đặt Hàng
+                        </button>
+                    </form>
+                </div>
+
+                <!-- /Order Details -->
             </div>
-            <br><br>
-            <form action="/ban-hang-online/san-pham-duoc-chon-thanh-toan/nut-dat-hang" method="post">
-               <div style="display: none">
-                <input id="idgh1" name="idgh1" >
-                <input id="tongtien1" name="tongtien1" >
-                <input id="iddc1" name="iddc1" >
-                <input id="sdt1" name="sdt1" >
-               </div>
-                <button style="float: right" type="button" id="nutdathangthanhtoan" onclick="nutdathang('${listghct.get(0).gioHang.id}')">Đặt Hàng
-                </button>
-            </form>
-
+            <!-- /row -->
         </div>
-
-
-        <%--    <div style=" width: 50%">--%>
-        <%--        <p style="display: inline-block; margin: 0;">Phương thức thanh toán</p>--%>
-        <%--        <br><br>--%>
-        <%--        <input style="display: inline-block;" type="radio" name="phuongthucthanhtoandathang" value="Thanh toán khi nhận hàng" checked> Thanh toán khi nhận hàng--%>
-        <%--        <br><br>--%>
-        <%--        <input style="display: inline-block;" type="radio" name="phuongthucthanhtoandathang" value="Thanh toán momo"> Thanh toán momo--%>
-        <%--        <br><br>--%>
-        <%--        <input style="display: inline-block;" type="radio" name="phuongthucthanhtoandathang" value="Thanh toán online"> Thanh toán online--%>
-        <%--    </div>--%>
-
-
+        <!-- /container -->
     </div>
-
 
     <%--modal them dia chi dat hang--%>
     <!-- The Modal -->
@@ -555,9 +561,113 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="modalChinhSach">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Chính sách</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Để mang đến sự thuận tiện và trải nghiệm tốt nhất cho khách hàng, GphoneS Store có những chính sách
+                    phù hợp khi khách hàng có nhu cầu đổi trả sản phẩm. Chúng tôi luôn mong muốn mang lại cho khách hàng
+                    những sản phẩm và chất lượng phục vụ tốt nhất.
+                    <br>
+
+                    Việc đổi trả sản phẩm đi kèm một số điều kiện cụ thể, Quý khách vui lòng tham khảo thông tin chi
+                    tiết bên dưới :
+                    <br>
+
+                    <b> 1. Điều kiện đổi sản phẩm:</b>
+                    <br>
+
+                    Sản phẩm không trùng khớp về màu sắc, mẫu mã, size theo đơn hàng.
+                    <br>
+                    Lỗi kỹ thuật do nhà sản xuất.
+                    <br>
+                    Sản phẩm đổi hàng phải còn mới, nguyên vẹn, không bị dính nước, không có dấu hiệu rơi vỡ
+                    <br>
+                    Sản phẩm phải còn đầy đủ tem, nhãn mác, thẻ bảo hành và hoá đơn mua hàng.
+                    <br>
+                    Sản phẩm đổi hàng còn trong thời hạn cho phép đổi trả.
+                    <br>
+                    Áp dụng đối với sản phẩm mua hàng online qua website và trực tiếp tại GPhoneS Store,
+                    chúng tôi không hỗ trợ cho những đơn hàng mua tại địa điểm khác.
+
+                    <br>
+                    Khách hàng chỉ có thể trả sản phẩm với điều kiện GPhoneS Store không có sản phẩm cùng loại khác (màu sắc,
+                    mẫu mã, kích thước) thay thế.
+                    <br>
+                    <b>2. Thời hạn đổi sản phẩm:</b>
+                    <br>
+                    Thời hạn đổi sản phẩm: 7 ngày đối với khách hàng mua online và 7 ngày đối với khách hàng mua trực
+                    tiếp tại cửa hàng kể từ ngày khách nhận được hàng.
+                    <br>
+                    Nếu vượt quá thời gian quy định trên thì chúng tôi sẽ không nhận đổi sản phẩm với bất kì lý do
+                    nào.
+                    <br>
+                    <b>3. Thời hạn thực hiện đổi lại sản phẩm cho khách hàng</b>
+                    <br>
+                    Đối với khách hàng mua online:
+                    <br>
+                    Ngay sau khi nhận được sản phẩm đổi của Quý khách hàng, chúng tôi sẽ tiến hành đánh giá sản phẩm và
+                    thông báo kết quả và phương án giải quyết đổi đến khách hàng trong vòng 3 đến 5 ngày
+                    <br>
+                    Đối với khách hàng mua trực tiếp tại cửa hàng:
+                    <br>
+                    Khách hàng đem sản phẩm cần đổi đến trực tiếp tại cửa hàng trên hóa đơn, nhân viên cửa hàng sẽ kiểm
+                    tra tình trạng sản phẩm và đưa ra hướng giải quyết ngay tại của hàng. Nhân viên tại cửa hàng sẽ tư
+                    vấn cụ thể để khách hàng chọn lựa phương án tốt nhất.
+                    <br>
+                    <b> 4. Hình thức đổi sản phẩm:</b>
+
+                    <br>
+                    Sản phẩm chỉ được đổi một lần duy nhất
+                    <br>
+                    Quý khách vui lòng đến trực tiếp cửa hàng GPhoneS Store ghi trên hoá đơn mua hàng (đối với khách hàng ở Hồ
+                    Chí Minh)
+                    <br>
+                    Đối với khách hàng ở khu vực khác, vui lòng gọi điện trực tiếp đến số điện thoại 098123456 hoặc gửi yêu cầu qua  mail gphonespluss@gmail.com Sau khi nhận được mail phản hồi xác nhận đồng ý từ
+                    GPhoneS, Quý khách đóng gói sản phẩm kèm đầy đủ phụ kiện, hoá đơn, phiếu bảo hành, …và gửi về địa chỉ
+                    số 3 phố Trịnh Văn Bô, Phương Canh, Nam Từ Liêm, Hà Nội.
+                    <br>
+
+                    <b> Lưu ý: GPhoneS Store khuyến khích Quý khách hàng nên chụp ảnh sản phẩm trước khi đổi hàng hóa, việc lưu
+                        giữ sản phẩm sẽ giúp khách hàng làm bằng chứng nếu có những vấn đề phát sinh trong quá trình đổi
+                        trả.
+                    </b>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAgree" onclick="onCheck()" data-bs-dismiss="modal">Tôi đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
+
+<div style="color: #0C9A9A;display: none"></div>
+
 <script>
+
+    var checkBox = document.getElementById("checkBox");
+    var button = document.getElementById("nutdathangthanhtoan");
+    checkBox.addEventListener("change",function (){
+        if (this.checked) {
+
+            button.style.display =''; // Enable nút khi checkbox được chọn
+
+        } else {
+            button.style.display ='none';
+        }
+    })
+    var btnAgree = document.getElementById("btnAgree");
+    btnAgree.addEventListener("click",function (){
+        checkBox.checked=true;
+        button.style.display='';
+
+
+    })
 
     function chonhetgiohangtongTRANGCHU(idgh) {
         // var  idgh1=encodeURIComponent(idgh)
@@ -665,13 +775,23 @@
         loadScript(0);
     }
 
+
+
+
+
     function loadSelect2diachi() {
         $('#diachids1').select2({
-            theme: 'bootstrap-5'
+            theme: 'bootstrap-5',
+            height: '5cm'
         });
     }
 
     loadSelect2diachi();
+</script>
+<script>
+    function anbt() {
+        document.getElementById('taikhoancuatoi').click();
+    }
 </script>
 <!-- jQuery Plugins -->
 <script src="/jsbanhang/jquery.min.js"></script>
@@ -680,6 +800,10 @@
 <script src="/jsbanhang/nouislider.min.js"></script>
 <script src="/jsbanhang/jquery.zoom.min.js"></script>
 <script src="/jsbanhang/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
 
 </body>
 </html>

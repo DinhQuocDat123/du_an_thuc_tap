@@ -70,7 +70,7 @@ let dataSet = [
 
         "scrollY": "42vh",
         "scrollCollapse": true,
-        "paging": false
+        "paging": true
     });
 
     table2.on('click', 'tbody tr', function () {

@@ -25,10 +25,13 @@
                     <div class="col-2">
                         <div class="btn-group ">
                             <a href="/ban-hang/thong-tin-hoa-don/${hd.id}" class="btn btn-info"
+                               onclick="if(!(confirm('Bạn có muốn thực hiện thao tác này không ? ')))return false;"
                                style="width: 120%;height: 47px"><label style="margin: 4px">Hóa Đơn
                                 Chờ ${i.index+1}</label></a>
-                            <a href="/ban-hang/remove/${hd.id}" class="btn btn-danger" style="width: 10px;height: 47px">
-                                <label style="padding-top:5px;padding-right: 20px;margin-right: 20px">X</label>
+                            <a href="/ban-hang/remove/${hd.id}" class="btn btn-danger" style="width: 10px;height: 47px"
+                               onclick="if(!(confirm('Bạn có muốn thực hiện thao tác này không ? ')))return false;">
+                                <label style="padding-top:5px;padding-right: 20px;margin-right: 20px"
+                                >X</label>
                             </a>
                         </div>
                     </div>
@@ -63,7 +66,7 @@
         </div>
         <br>
         <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
+            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
                 <div class="card-body">
                     <h4 class="card-title" style="float: left">Danh sách Hóa đơn chi tiết</h4>
                         <%--            Tìm kiếm               --%>
@@ -86,11 +89,11 @@
 
                         <%--           kết thúc tìm kiếm         --%>
                     <div class="table-responsive">
-                        <table class="table table-striped" style="color: black">
+                        <table id="example2" class="display" style="color: black">
                             <thead>
                             <tr>
-                                <th>Tên Sản Phẩm</th>
                                 <th>Ảnh</th>
+                                <th>Tên Sản Phẩm</th>
                                 <th>Hãng</th>
                                 <th>Màu Sắc</th>
                                 <th>Ram</th>
@@ -104,10 +107,10 @@
                             <tbody id="table-search-hoa-don-chi-tiet">
                             <c:forEach items="${listHoaDonChiTiet}" var="hdct" varStatus="i">
                                 <tr>
-                                    <td>${hdct.imei.chiTietSanPham.sanPham.ten}</td>
                                     <td align="center">
                                         <img src="/uploads/${hdct.imei.chiTietSanPham.urlAnh}" width="40" height="40">
                                     </td>
+                                    <td>${hdct.imei.chiTietSanPham.sanPham.ten}</td>
                                     <td>${hdct.imei.chiTietSanPham.sanPham.hangSanPham.ten}</td>
                                     <td>${hdct.imei.chiTietSanPham.mauSac.ten}</td>
                                     <td>${hdct.imei.chiTietSanPham.ram.dungLuong}</td>
@@ -116,9 +119,11 @@
                                     <td>${hdct.donGia}</td>
                                     <td>${hdct.donGia * hdct.soLuong}</td>
                                     <td>
-                                        <button class="btn btn-danger btn-icon-text"><a
+                                        <button class="btn  btn-icon-text"><a
                                                 href="/ban-hang/delete-hoa-don-chi-tiet/${hdct.id}"
-                                                style="text-decoration: none;color: black">Xóa sản phẩm</a>
+                                                style="text-decoration: none;color: black"
+                                                onclick="if(!(confirm('Bạn có muốn thực hiện thao tác này không ? ')))return false;"
+                                        ><img src="/uploads/delete.png" width="24px" height="24px"></a>
                                         </button>
                                     </td>
                                 </tr>
@@ -132,10 +137,10 @@
         <br>
         <c:if test="${not listHoaDonChiTiet.isEmpty()}">
             <div class="row">
-                <div class="col-12 outer-border p-3 border border-secondary">
+                <div class="col-12">
                     <form:form action="/ban-hang/xac-nhan/${HoaDon.id}" modelAttribute="HoaDon" method="post">
-                        <div class="col-12 grid-margin" style="color: black">
-                            <div class="card">
+                        <div class="col-12 grid-margin " style="color: black">
+                            <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
                                 <div class="card-body">
                                     <h4 class="card-title">Thông Tin Hóa Đơn</h4>
                                     <form class="form-sample">
@@ -167,18 +172,20 @@
                                                                 path="khachHang">Khách Hàng:</form:label>
                                                     <div class="col-sm-9">
                                                         <div class="row">
-
                                                             <div class="col-10">
                                                                 <form:select path="khachHang" class="form-control"
                                                                              id="selectKhachHang">
-                                                                    <option selected disabled>Khách hàng</option>
+                                                                    <option selected disabled value="1">
+                                                                        Khách hàng
+                                                                    </option>
                                                                     <form:options items="${listKhachHang}"
                                                                                   itemLabel="hoTen" itemValue="id"/>
                                                                 </form:select>
+                                                                <label id="nullKH1" style="color: red"></label>
                                                             </div>
                                                             <div class="col-2">
                                                                 <a href="/ban-hang/modal-khach-hang"
-                                                                   class="btn btn-secondary"
+                                                                   class="btn"
                                                                    data-bs-toggle="modal"
                                                                    data-bs-target="#newKhachHang"><img
                                                                         src="/uploads/plus.png" alt=""></a>
@@ -192,7 +199,8 @@
                                                     <form:label class="col-sm-3 col-form-label"
                                                                 path="sdt">Số điện thoại:</form:label>
                                                     <div class="col-sm-9">
-                                                        <form:input class="form-control" path="sdt"/>
+                                                        <form:input class="form-control" path="sdt" id="sdthd"/>
+                                                        <label id="sdthd1" style="color: red"></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,6 +222,7 @@
                                                     <label class="col-sm-3 col-form-label">Tiền Khách Gửi:</label>
                                                     <div class="col-sm-9">
                                                         <input class="form-control" type="text" id="tienKhachDua"/>
+                                                        <label id="tienKhachDua1" style="color: red"></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -243,7 +252,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-primary"
-                                                        onclick="return myFunction4()">Xác Nhận
+                                                        id="bthd" onclick="return checkhd()">Xác Nhận
                                                 </button>
                                             </div>
                                         </div>
@@ -275,11 +284,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <form:label class="col-sm-3 col-form-label"
-                                                            path="hoTen">Tên khách hàng:<label id="tenkh1" style="color: red"></label>
+                                                            path="hoTen">Tên khách hàng:
                                                 </form:label>
                                                 <div class="col-sm-9">
                                                     <form:input class="form-control" placeholder="" path="hoTen"
                                                                 id="tenkh"/>
+                                                    <label id="tenkh1" style="color: red"></label>
                                                     <form:errors path="hoTen" cssStyle="color: red"/>
                                                 </div>
                                             </div>
@@ -287,11 +297,11 @@
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <form:label class="col-sm-3 col-form-label"
-                                                            path="email">Email:<label id="email1"
-                                                    style="color: red"></label></form:label>
+                                                            path="email">Email:</form:label>
                                                 <div class="col-sm-9">
                                                     <form:input class="form-control" placeholder=""
                                                                 path="email" id="emailkh"/>
+                                                    <label id="email1" style="color: red"></label>
                                                     <form:errors path="email"
                                                                  cssStyle="color: red"/>
                                                 </div>
@@ -302,10 +312,11 @@
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <form:label class="col-sm-3 col-form-label"
-                                                            path="sdt">SĐT:<label id="sdtkh1" style="color: red"></label></form:label>
+                                                            path="sdt">SĐT:</form:label>
                                                 <div class="col-sm-9">
                                                     <form:input class="form-control" placeholder="" path="sdt"
                                                                 id="sdtkh"/>
+                                                    <label id="sdtkh1" style="color: red"></label>
                                                     <form:errors path="sdt"
                                                                  cssStyle="color: red"/>
                                                 </div>
@@ -326,11 +337,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <form:label class="col-sm-3 col-form-label"
-                                                            path="diem">Điểm:<label id="diem1" style="color: red"></label></form:label>
+                                                            path="diem">Điểm:</form:label>
                                                 <div class="col-sm-9">
                                                     <form:input class="form-control" placeholder=""
                                                                 type="number"
                                                                 path="diem" id="diemkh"/>
+                                                    <label id="diem1" style="color: red"></label>
                                                     <form:errors path="diem"
                                                                  cssStyle="color: red"/>
                                                 </div>
@@ -341,10 +353,12 @@
                                                 <form:label class="col-sm-3 col-form-label"
                                                             path="gioiTinh">Giới Tính:</form:label>
                                                 <div class="col-sm-9">
-                                                    <form:radiobutton path="gioiTinh"
-                                                                      value="true" checked="true"/>Nam
-                                                    <form:radiobutton path="gioiTinh"
-                                                                      value="false"/>Nữ
+                                                    <div class="form-control">
+                                                        <form:radiobutton path="gioiTinh"
+                                                                          value="true" checked="true"/>Nam
+                                                        <form:radiobutton path="gioiTinh"
+                                                                          value="false" cssStyle="margin-left: 2cm"/>Nữ
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -410,77 +424,109 @@
                             <div class="container px-0 px-lg-5 mt-0">
                                 <div class="row gx-0 gx-lg-5 row-cols-0 row-cols-md-0 row-cols-xl-5 justify-content-center"
                                      style="width: 100%;color: black">
-                                    <div style="height: 1.5cm">
-                                        <select class="form-control" id="hangds1" onchange="clickcombobox()">
-                                            <option selected value="null">Hãng sản phẩm</option>
-                                            <c:forEach items="${hangds}" var="ht">
-                                                <option value="${ht.ten}">${ht.ten}</option>
-                                            </c:forEach>
-                                        </select>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="hangds1"
+                                                            onchange="clickcombobox()">
+                                                        <option selected value="null">Hãng</option>
+                                                        <c:forEach items="${hangds}" var="ht">
+                                                            <option value="${ht.ten}">${ht.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="camds1" onchange="clickcombobox()">
+                                                        <option selected value="null">Camera</option>
+                                                        <c:forEach items="${camds}" var="ht">
+                                                            <option value="${ht.thongSo}">${ht.thongSo}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="mands1" onchange="clickcombobox()">
+                                                        <option selected value="null">Màn hình</option>
+                                                        <c:forEach items="${mands}" var="ht">
+                                                            <option value="${ht.thongSo}">${ht.thongSo}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="mauds1" onchange="clickcombobox()">
+                                                        <option selected value="null">Màu sắc</option>
+                                                        <c:forEach items="${mauds}" var="ht">
+                                                            <option value="${ht.ten}">${ht.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="ramds1" onchange="clickcombobox()">
+                                                        <option selected value="null">Ram</option>
+                                                        <c:forEach items="${ramds}" var="ht">
+                                                            <option value="${ht.dungLuong}">${ht.dungLuong}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div>
-                                        <select class="form-control" id="camds1" onchange="clickcombobox()">
-                                            <option selected value="null">Camera</option>
-                                            <c:forEach items="${camds}" var="ht">
-                                                <option value="${ht.thongSo}">${ht.thongSo}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <select class="form-control" id="mands1" onchange="clickcombobox()">
-                                            <option selected value="null">Màn hình</option>
-                                            <c:forEach items="${mands}" var="ht">
-                                                <option value="${ht.thongSo}">${ht.thongSo}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div style="height: 1.5cm">
-                                        <select class="form-control" id="mauds1" onchange="clickcombobox()">
-                                            <option selected value="null">Màu sắc</option>
-                                            <c:forEach items="${mauds}" var="ht">
-                                                <option value="${ht.ten}">${ht.ten}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <select class="form-control" id="ramds1" onchange="clickcombobox()">
-                                            <option selected value="null">Ram</option>
-                                            <c:forEach items="${ramds}" var="ht">
-                                                <option value="${ht.dungLuong}">${ht.dungLuong}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <select class="form-control" id="romds1" onchange="clickcombobox()">
-                                            <option selected value="null">Rom</option>
-                                            <c:forEach items="${romds}" var="ht">
-                                                <option value="${ht.dungLuong}">${ht.dungLuong}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <select class="form-control" id="dungds1" onchange="clickcombobox()">
-                                            <option selected value="null">Dung lượng pin</option>
-                                            <c:forEach items="${dungds}" var="ht">
-                                                <option value="${ht.thongSo}">${ht.thongSo}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <select class="form-control" id="chipds1" onchange="clickcombobox()">
-                                            <option selected value="null">Chip</option>
-                                            <c:forEach items="${chipds}" var="ht">
-                                                <option value="${ht.ten}">${ht.ten}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <select class="form-control" id="sands1" onchange="clickcombobox()">
-                                            <option selected value="null">Sản phẩm</option>
-                                            <c:forEach items="${sands}" var="ht">
-                                                <option value="${ht.ten}">${ht.ten}</option>
-                                            </c:forEach>
-                                        </select>
+                                    <br>
+                                    <br>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="romds1" onchange="clickcombobox()">
+                                                        <option selected value="null">Rom</option>
+                                                        <c:forEach items="${romds}" var="ht">
+                                                            <option value="${ht.dungLuong}">${ht.dungLuong}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="dungds1"
+                                                            onchange="clickcombobox()">
+                                                        <option selected value="null">Dung lượng pin</option>
+                                                        <c:forEach items="${dungds}" var="ht">
+                                                            <option value="${ht.thongSo}">${ht.thongSo}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="chipds1"
+                                                            onchange="clickcombobox()">
+                                                        <option selected value="null">Chip</option>
+                                                        <c:forEach items="${chipds}" var="ht">
+                                                            <option value="${ht.ten}">${ht.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div style="border: black solid 0.5px">
+                                                    <select class="form-control" id="sands1" onchange="clickcombobox()">
+                                                        <option selected value="null">Sản phẩm</option>
+                                                        <c:forEach items="${sands}" var="ht">
+                                                            <option value="${ht.ten}">${ht.ten}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -500,9 +546,10 @@
                                 <%--           kết thúc tìm kiếm         --%>
                                 <div class="table-responsive">
                                     <div>
-                                        <table id="example" class="display" style="min-width: 845px; color: black">
+                                        <table id="example" class="display" style="min-width: 1200px; color: black">
                                             <thead>
                                             <tr>
+                                                <th style="display: none"></th>
                                                 <th>Mã Sản Phẩm</th>
                                                 <th>Tên Sản Phẩm</th>
                                                 <th>Ảnh</th>
@@ -519,6 +566,7 @@
                                                    id="banglocthaydoi">
                                             <c:forEach items="${listChiTietSanPham}" var="ctsp">
                                                 <tr>
+                                                    <td style="display: none">${ctsp.id}</td>
                                                     <td>${ctsp.sanPham.ma}</td>
                                                     <td>${ctsp.sanPham.ten}</td>
                                                     <td align="center">
@@ -531,15 +579,15 @@
                                                     <td>${ctsp.giaBan}</td>
                                                     <td>${ctsp.soLuong}</td>
                                                     <td>
-                                                        <a class="btn btn-warning btn-icon-text"
-                                                           data-bs-toggle="modal" data-bs-target="#nhapImei">Nhập
+                                                        <a
+                                                                class="btn btn-warning btn-icon-text"
+                                                                data-bs-toggle="modal" data-bs-target="#nhapImei">Nhập
                                                             IMEI</a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
                                         </table>
-
                                     </div>
                                 </div>
                             </div>
@@ -561,18 +609,30 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title" style="float: left">Danh sách IMEI</h4>
+                            <h4 class="card-title"
+                                style="float: left">Danh sách
+                                IMEI</h4>
                             <%--            Tìm kiếm               --%>
                             <div class="row">
                                 <div class="col-4">
-                                    <label id="thongBaoImei" style="float: right"></label>
+                                    <label id="thongBaoImei"
+                                           style="float: right"></label>
                                 </div>
                                 <div class="col-8">
-                                    <div class="input-group" style="width: 50%; float: right">
-                                        <input type="text" class="form-control"
-                                               name="search-imei" id="imeiSearchInput" placeholder="Tìm kiếm IMEI">
+                                    <div class="input-group"
+                                         style="width: 50%; float: right">
+                                        <input type="hidden"
+                                               id="idCTSPham"
+                                               name="idCTSanPham">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="search-imei"
+                                               id="imeiSearchInput"
+                                               placeholder="Tìm kiếm IMEI">
                                         <div class="input-group-append">
-                                            <button class="btn btn-sm btn-primary" type="button" id="searchImei"
+                                            <button class="btn btn-sm btn-primary"
+                                                    type="button"
+                                                    id="searchImei"
                                             >Tìm kiếm
                                             </button>
                                         </div>
@@ -582,7 +642,9 @@
 
                             <%--           kết thúc tìm kiếm         --%>
                             <div class="table-responsive">
-                                <table class="table table-striped" style="color: black" id="table_id">
+                                <table class="table table-striped"
+                                       style="color: black"
+                                       id="table_id">
                                     <thead>
                                     <tr>
                                         <th>Tên Sản Phẩm</th>
@@ -602,7 +664,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
-                        data-bs-toggle="modal" data-bs-target="#newSanPham">
+                        data-bs-toggle="modal"
+                        data-bs-target="#newSanPham">
                     Quay về
                 </button>
                 <button type="button" class="btn btn-secondary"
@@ -616,7 +679,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>--%>
 <script>
     function myFunction1() {
         let text = "Bạn chắc chắn muốn thêm";
@@ -658,6 +721,62 @@
             return false;
         }
     }
+
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+
+    if (toastTrigger) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+        toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+        })
+    }
+
+    function checkhd() {
+        var sdthd = document.getElementById("sdthd").value;
+        var tien = document.getElementById("tienKhachDua").value;
+        var ketQua = document.getElementById("ketQua").value;
+        var nullKH = document.getElementById("selectKhachHang").value;
+        var regex = /^0\d{9}$/;
+
+        if (!regex.test(sdthd)) {
+            document.getElementById("sdthd1").innerHTML = "SDT phải 10 số và bắt đầu là số 0";
+            document.getElementById("bthd").type = "button";
+            return false;
+        } else {
+            document.getElementById("sdthd1").innerHTML = "";
+            if (tien.trim() === '') {
+                document.getElementById("tienKhachDua1").innerHTML = "Tiền khách đưa không được để trống";
+                document.getElementById("bthd").type = "button";
+                return false;
+            } else {
+                if (tien % 1 !== 0 || tien < 0) {
+                    document.getElementById('tienKhachDua1').innerHTML = 'Tiền khách đưa phải là số nguyên dương';
+                    document.getElementById('bthd').type = 'button';
+                    return false;
+                } else {
+                    document.getElementById('tienKhachDua1').innerHTML = '';
+                    if (ketQua % 1 !== 0 && ketQua < 0) {
+                        document.getElementById('bthd').type = 'button';
+                        return false;
+                    } else {
+                        if (nullKH == 1) {
+                            document.getElementById('nullKH1').innerHTML = 'Chưa chọn khách hàng';
+                            document.getElementById('bthd').type = 'button';
+                            return false;
+                        } else {
+                            document.getElementById('nullKH1').innerHTML = '';
+                            document.getElementById('bthd').type = 'summit';
+                            return true;
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+
 
     document.getElementById("tienKhachDua").addEventListener("keyup", function () {
         tinhTienThua();
@@ -797,11 +916,25 @@
     });
 </script>
 <script>
+    const aTags = document.querySelectorAll('.btn-warning.btn-icon-text');
+
+    aTags.forEach(aTag => {
+        aTag.addEventListener('click', () => {
+            // Lấy ID của sản phẩm
+            const productId = aTag.closest('tr').querySelector('td:first-child').textContent;
+
+            // Lưu ID của sản phẩm vào input
+            const input = document.querySelector('#idCTSPham');
+            input.value = productId;
+        });
+    });
     $('button[id^="searchImei"]').on('click', async function (e) {
         const btn = $(this);
         const parentModal = btn.closest('.modal'); // Lấy modal cha gần nhất của nút "Tìm kiếm" được nhấn
         const search = parentModal.find("#imeiSearchInput").val();
+        const idCTSPInputElement = $(document).find('#idCTSPham').val();
         const url = "http://localhost:8080/ban-hang/search-imei?search-imei=" + search;
+        console.log(url)
         if (search === "") {
             let html = `
                 <tr>
@@ -825,15 +958,25 @@
                 let html = ``;
                 for (let i = 0; i < data.length; i++) {
                     const imei = data[i];
-                    const tr = `
-            <tr>
-                <td>` + imei.chiTietSanPham.sanPham.ten + `</td>
-                <td>` + imei.soImei + `</td>
-                <td>` + (imei.tinhTrang == 0 ? "Chưa bán" : "Đã bán") + `</td>
-                <td><a href="/ban-hang/them-imei/` + imei.id + `">Thêm IMEI</a></td>
-            </tr>
-            `;
-                    html += tr;
+                    const idImei = imei.chiTietSanPham.id;
+                    if (idImei.trim() === idCTSPInputElement.trim()) {
+                        const tr = `
+                        <tr>
+                            <td>` + imei.chiTietSanPham.sanPham.ten + `</td>
+                            <td>` + imei.soImei + `</td>
+                            <td>` + (imei.tinhTrang == 0 ? "Chưa bán" : "Đã bán") + `</td>
+                            <td><a href="/ban-hang/them-imei/` + imei.id + `">Thêm IMEI</a></td>
+                        </tr>
+                        `;
+                        html += tr;
+                    } else {
+                        const tr = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; color: red"><strong>IMEI này không đúng với sản phẩm bạn vừa chọn!</strong></td>
+                    </tr>
+                    `;
+                        html += tr;
+                    }
                 }
                 parentModal.find(".imei_search").html(html);
             }
@@ -883,7 +1026,6 @@
         }
     });
 </script>
-
 <script>
     function loadInterface(interfaceUrl) {
         fetch(interfaceUrl)
@@ -1001,8 +1143,8 @@
                 const hdct = data[i];
                 const tr = `
             <tr>
-                <td>` + hdct.imei.chiTietSanPham.sanPham.ten + `</td>
                 <td align="center"><img src="/uploads/` + hdct.imei.chiTietSanPham.urlAnh + `" width="40" height="40"></td>
+                <td>` + hdct.imei.chiTietSanPham.sanPham.ten + `</td>
                 <td>` + hdct.imei.chiTietSanPham.sanPham.hangSanPham.ten + `</td>
                 <td>` + hdct.imei.chiTietSanPham.mauSac.ten + `</td>
                 <td>` + hdct.imei.chiTietSanPham.ram.dungLuong + `</td>
@@ -1012,9 +1154,11 @@
                 <td>` + hdct.donGia + `</td>
                 <td>` + hdct.donGia * hdct.soLuong + `</td>
                 <td>
-                    <button class="btn btn-danger btn-icon-text"><a
-                    href="/ban-hang/delete-hoa-don-chi-tiet/` + hdct.id + `
-                    style="text-decoration: none;color: black">Xóa sản phẩm</a>
+                    <button class="btn  btn-icon-text"><a
+                    href="/ban-hang/delete-hoa-don-chi-tiet/` + hdct.id + `"
+                    style="text-decoration: none;color: black"
+                    onclick="if(!(confirm('Bạn có muốn thực hiện thao tác này không ? ')))return false;"
+                    ><img src="/uploads/delete.png" width="24px" height="24px"></a>
                     </button>
                 </td>
             </tr>
@@ -1028,7 +1172,7 @@
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 <script src="../../js/scan-qr.js"></script>
 </html>

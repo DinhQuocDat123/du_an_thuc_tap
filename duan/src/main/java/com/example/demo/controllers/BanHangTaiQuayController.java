@@ -116,7 +116,7 @@ public class BanHangTaiQuayController {
     @PostMapping("/add-hoa-don")
     public String addHoaDon(Model model, @ModelAttribute("HoaDon") HoaDon hoaDon, @ModelAttribute("modalAddKhachHang") KhachHang khachHang) {
         List<HoaDon> list = hoaDonService.find();
-        if (list.size() >= 1) {
+        if (list.size() >= 6) {
             hoaDonnn = null;
             model.addAttribute("HoaDon", hoaDonnn);
             model.addAttribute("thongBaoHoaDon", "Đã quá số lượng hóa đơn chờ");
@@ -149,7 +149,8 @@ public class BanHangTaiQuayController {
     }
 
     @GetMapping("/thong-tin-hoa-don/{id}")
-    public String thongTin(Model model, @ModelAttribute("HoaDon") HoaDon hoaDon, @PathVariable("id") UUID id,
+    public String thongTin(Model model,
+                           @ModelAttribute("HoaDon") HoaDon hoaDon, @PathVariable("id") UUID id,
                            @ModelAttribute("modalAddKhachHang") KhachHang khachHang, @RequestParam("pageNum") Optional<Integer> num,
                            @RequestParam(name = "size", defaultValue = "2", required = false) Integer size) {
 
@@ -295,6 +296,7 @@ public class BanHangTaiQuayController {
         model.addAttribute("listImei", listIMEI);
         List<HoaDon> list = hoaDonService.find();
         model.addAttribute("listHoaDon", list);
+
         return listIMEI;
     }
 
@@ -498,7 +500,7 @@ public class BanHangTaiQuayController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDispositionFormData("attachment", "hoa_don_"+id+".pdf");
+        headers.setContentDispositionFormData("attachment", "hoa_don_" + id + ".pdf");
 
         return ResponseEntity.ok().headers(headers).body(pdfBytes);
     }
@@ -571,7 +573,27 @@ public class BanHangTaiQuayController {
 
         IMEI imei = imeiService.searchSoImei(id);
         if (imei == null) {
-            return "redirect:/ban-hang/thong-tin-hoa-don/" + idHoaDon;
+            List<HoaDonChiTiet> list = hoaDonChiTietService.getHoaDonChiTiet(hoaDonnn.getId());
+            model.addAttribute("listHoaDonChiTiet", list);
+            List<HoaDon> listHD = hoaDonService.find();
+            model.addAttribute("listHoaDon", listHD);
+            model.addAttribute("HoaDon", hoaDonnn);
+            model.addAttribute("listHang", hangSanPhamService.findAll0());
+            model.addAttribute("listMauSac", mauSacService.findAll0());
+            model.addAttribute("listChip", chipService.findAll0());
+            model.addAttribute("listRam", ramService.findAll0());
+            model.addAttribute("listRom", romService.findAll0());
+            model.addAttribute("dungLuongPin", dungLuongPinService.findAll0());
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("listChiTietSanPham", chiTietSanPhamService.findAll0());
+//            model.addAttribute("listNhanVien", nhanVienService.findAll());
+            model.addAttribute("listKhachHang", khachHangService.findAll0());
+            model.addAttribute("listDiaChi", diaChiService.findAll0());
+            model.addAttribute("listHangKhachHang", hangKhachHangService.findAll0());
+            model.addAttribute("thongBaoHoaDon", "Sản phẩm vừa quét đã bán hoặc đang chờ xử lý");
+            model.addAttribute("contentPage", "../ban-hang/hien-thi.jsp");
+            return "home/layout";
         } else {
             HoaDonChiTiet hdct = new HoaDonChiTiet();
             hdct.setImei(imei);
@@ -616,7 +638,9 @@ public class BanHangTaiQuayController {
                 model.addAttribute("listKhachHang", khachHangService.findAll0());
                 model.addAttribute("listDiaChi", diaChiService.findAll0());
                 model.addAttribute("listHangKhachHang", hangKhachHangService.findAll0());
-                return "redirect:/ban-hang/thong-tin-hoa-don/" + idHoaDon;
+                model.addAttribute("thongBaoHoaDon", "Sản phẩm đã thêm vào hóa đơn");
+                model.addAttribute("contentPage", "../ban-hang/hien-thi.jsp");
+                return "home/layout";
             } else {
                 chiTietSanPhamService.update1(ct);
                 List<HoaDonChiTiet> list = hoaDonChiTietService.getHoaDonChiTiet(hoaDonnn.getId());
@@ -646,7 +670,9 @@ public class BanHangTaiQuayController {
                 model.addAttribute("listKhachHang", khachHangService.findAll0());
                 model.addAttribute("listDiaChi", diaChiService.findAll0());
                 model.addAttribute("listHangKhachHang", hangKhachHangService.findAll0());
-                return "redirect:/ban-hang/thong-tin-hoa-don/" + idHoaDon;
+                model.addAttribute("thongBaoHoaDon", "Sản phẩm đã thêm vào hóa đơn");
+                model.addAttribute("contentPage", "../ban-hang/hien-thi.jsp");
+                return "home/layout";
             }
         }
     }

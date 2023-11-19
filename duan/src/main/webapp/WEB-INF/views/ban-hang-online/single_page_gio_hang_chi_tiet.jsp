@@ -118,11 +118,9 @@
             <thead>
             <tr style="background-color: #70c0b1">
                 <th><input type="checkbox" name="checktong"
-                           onclick="chonhetgiohangtong('${listghct.get(0).gioHang.id}');"  ${tttong==0 ?"checked":""}>Chọn
-                    tất cả
+                           onclick="chonhetgiohangtong('${listghct.get(0).gioHang.id}');"  ${tttong==0 ?"checked":""}>
                 </th>
-                <th></th>
-                <th>Sản Phẩm</th>
+                <th colspan="2" style="text-align: center">Sản Phẩm</th>
                 <th>Đơn Giá</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
@@ -137,21 +135,19 @@
                         <input type="checkbox" name="checkidgh" value="${ht.id}"
                                onclick="chonsanphamgiohang('${stt.index}','${ht.id}','${ht.gioHang.id}');"  ${ht.tinhTrang==0 ?"checked":""}>
                     </td>
-                    <td>
+                    <td align="center">
                         <img src="../../../uploads/${ht.chiTietSanPham.urlAnh}" width="40" height="40"
                              style="border-radius:50% 50% 50% 50%">
                     </td>
-                    <td>
+                    <td style="text-align: center">
                             ${ht.chiTietSanPham.sanPham.ten}-${ht.chiTietSanPham.mauSac.ten}<br>
                             ${ht.chiTietSanPham.ram.dungLuong}-${ht.chiTietSanPham.rom.dungLuong}<br>
 
                     </td>
                     <td>
-                        <div name="checkdongiakhigiam">${ht.donGiaKhiGiam}</div>
-                        đ-
-                        <del class="product-old-price">${ht.donGia}</del>
-                        đ
-
+                        <div name="checkdongiakhigiam">${ht.donGiaKhiGiam} đ</div>
+                        -
+                        <del class="product-old-price">${ht.donGia} đ</del>
                     </td>
                     <td>
                             <%--                 <input type="text" min="1" max="${banhangonline.soluongcon(ht.chiTietSanPham.id)}" value="${ht.soLuong}" name="checksoluong"  style="height: 1cm">--%>

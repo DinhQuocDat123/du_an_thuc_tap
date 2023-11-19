@@ -26,17 +26,16 @@
                             </h4>
 
                         </div>
-                        <div class="add-to-cart" style="margin-top: 7cm">
-                            Số lượng :<label style="background: white;color: red;border: 1px solid white"
-                                             id="thongbaosoluong"></label>
-                            <br>
-                            <c:if test="${idkhachhang=='1'}">
-                            <div class="qty-label">
-                                <div class="" style="margin-left: 1cm">
+                        <div class="add-to-cart" style="margin-top: 5cm">
 
-                                    <c:if test="${idkhachhang=='1'}">
+                            <c:if test="${idkhachhang=='1'}">
+
+                            <div class="qty-label">
+                                <div class="" style="margin-left: 0cm">
+                                    <label >Số lượng :</label>
+
                                         <div class="qty-label">
-                                            <div class="" style="margin-left: 1cm">
+                                            <div class="" style="margin-left: 0cm">
                                                 <BUTTON class="qty-down">-</BUTTON>
                                                 <input type="number" value="1" min="1"
                                                        max="${banhangonline.soluongcon(motctsp.id)}" id="input2"
@@ -46,7 +45,9 @@
                                         </div>
                                         <label style="background: white;border: 1px solid white">Số lượng còn
                                             :${banhangonline.soluongcon(motctsp.id)}</label>
-                                        <br><br>
+                                        <br>
+                                    <label style="background: white;color: red;border: 1px solid white"
+                                           id="thongbaosoluong"></label><br>
                                         <a href="/login">
                                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào
                                                 giỏ hàng
@@ -58,16 +59,16 @@
                                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Mua ngay
                                             </button>
                                         </a>
-                                    </c:if>
+
                                 </div>
                             </div>
                         </div>
                         </c:if>
                         <c:if test="${idkhachhang!='1'}">
                             <form action="" method="post" id="formctsp">
-
+                                <label >Số lượng :</label>
                                 <div class="qty-label">
-                                    <div class="" style="margin-left: 1cm">
+                                    <div class="" style="margin-left: 0cm">
                                         <BUTTON class="qty-down" type="button">-</BUTTON>
                                         <input type="number" value="0" min="0"
                                                max="${banhangonline.soluongcon(motctsp.id)-banhangonline.sl1ctsptronggh(banhangonline.ListghTheoidkh(idkhachhang).get(0).getId(),motctsp.id)}"
@@ -79,7 +80,10 @@
 
                                 <label style="background: white;border: 1px solid white">Số lượng còn
                                     :${banhangonline.soluongcon(motctsp.id)}</label>
-                                <br><br>
+                                <br>
+                                <label style="background: white;color: red;border: 1px solid white"
+                                       id="thongbaosoluong"></label>
+                                <br>
 
                                     <%--                            <p>${idkhachhang}----${motctsp.id}</p>--%>
                                 <button class="add-to-cart-btn" type="button"
@@ -464,20 +468,20 @@
                         </div>
 
 
-                        <div class="add-to-cart" style="margin-top: 7cm">
-                            Số lượng :<label style="background: white;color: red;border: 1px solid white"
-                                             id="thongbaosoluong"></label>
-                            <br>
+                        <div class="add-to-cart" style="margin-top: 5cm">
+                            <label>Số lượng :</label>
+
                             <div class="qty-label">
 
-                                <div class="" style="margin-left: 1cm">
+                                <div class="" style="margin-left: 0cm">
                                     <BUTTON class="qty-down">-</BUTTON>
                                     <input type="number" value="1" min="1" max="0" id="input2" style="width: 2cm">
                                     <BUTTON class="qty-up">+</BUTTON>
                                 </div>
                             </div>
                             <label style="background: white;border: 1px solid white">Số lượng còn :0</label>
-                            <br><br>
+                            <br><label style="background: white;color: red;border: 1px solid white"
+                                       id="thongbaosoluong"></label><br>
                             <c:if test="${idkhachhang=='1'}">
                                 <a href="/login">
                                     <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ

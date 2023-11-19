@@ -223,6 +223,7 @@
 			<div class="container">
 				<!-- row -->
 				<div class="shadow p-3 mb-5 bg-body-tertiary rounded"  style="border: solid #dfdfdf 1px; border-radius: 3px">
+					<c:forEach items="listsp" var="ctsp">
 					<table class="table" style="font-size: 15px;">
 						<tbody>
 						<h4> Thông tin hàng hoá</h4>
@@ -272,6 +273,7 @@
 							<th class="col-4">Giá trị 6</th>
 						</tr>
 					</table>
+					</c:forEach>
 				</div>
 				<!-- /row -->
 			</div>

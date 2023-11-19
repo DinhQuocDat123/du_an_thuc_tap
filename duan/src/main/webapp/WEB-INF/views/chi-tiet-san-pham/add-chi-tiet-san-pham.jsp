@@ -77,7 +77,7 @@
                                                 <option selected disabled>Sản phẩm</option>
                                                 <form:options items="${listSanPham}" itemLabel="ten" itemValue="id"/>
                                             </form:select>
-                                            <form:errors path="sanPham"/>
+                                            <span class="text-danger">${errorSanPham}</span>
                                         </div>
                                         <div class="col-1">
                                             <a type="button" data-bs-toggle="modal"
@@ -95,6 +95,8 @@
                                                 <option selected disabled>Chip</option>
                                                 <form:options items="${listChip}" itemLabel="ten" itemValue="id"/>
                                             </form:select>
+                                            <span class="text-danger">${errorChip}</span>
+
                                         </div>
                                         <div class="col-1">
                                             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalChip">
@@ -111,6 +113,8 @@
                                                 <option selected disabled>Dung lượng lưu trữ</option>
                                                 <form:options items="${listRom}" itemLabel="dungLuong" itemValue="id"/>
                                             </form:select>
+                                            <span class="text-danger">${errorRom}</span>
+
                                         </div>
                                         <div class="col-1">
                                             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalRom">
@@ -129,6 +133,8 @@
                                                 <option selected disabled>Màu sắc</option>
                                                 <form:options items="${listMauSac}" itemLabel="ten" itemValue="id"/>
                                             </form:select>
+                                            <span class="text-danger">${errorMauSac}</span>
+
                                         </div>
                                         <div class="col-1">
                                             <a type="button" data-bs-toggle="modal"
@@ -146,6 +152,8 @@
                                                 <option selected disabled>Dung lượng bộ nhớ</option>
                                                 <form:options items="${listRam}" itemLabel="dungLuong" itemValue="id"/>
                                             </form:select>
+                                            <span class="text-danger">${errorRam}</span>
+
                                         </div>
                                         <div class="col-1">
                                             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalRam">
@@ -163,6 +171,8 @@
                                                 <form:options items="${listPin}" itemLabel="dungLuongPin.thongSo"
                                                               itemValue="id"/>
                                             </form:select>
+                                            <span class="text-danger">${errorPin}</span>
+
                                         </div>
                                         <div class="col-1">
                                             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModalPin">

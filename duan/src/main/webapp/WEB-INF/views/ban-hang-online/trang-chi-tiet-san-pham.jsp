@@ -225,7 +225,6 @@
 
 <!-- HEADER -->
 <header>
-    <!-- TOP HEADER -->
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
@@ -256,7 +255,12 @@
                                  style="border-radius: 10px;width: 3.5cm;margin-top: 10px;width: 180px">
                                 <div>
                                     <div>
-                                        <a href="#" class="btn btn-primary">Tài khoản của tôi</a>
+                                        <form action="/thong-tin-ca-nhan-khach-hang" method="post" style="display: none">
+                                            <input value="${idkhachhang}" name="idKhachHang" style="display: none">
+                                            <button style="" class="btn btn-primary" type="submit" id="taikhoancuatoi">Tài khoản của tôi</button>
+                                        </form>
+                                        <a  class="btn btn-primary" type="submit" onclick="anbt()">Tài khoản của tôi</a>
+
                                     </div>
                                     <div>
                                         <a href="/ban-hang-online/hoa-don-online/${idkhachhang}"
@@ -457,9 +461,11 @@
 
 <div id="thanhlocxemchitietsanpham">
     <p id="vt"></p>
-    <div style="position: absolute;margin-left: 55%;width: 43%;margin-top: 8%;z-index: 2;">
+    <div style="position: absolute;margin-left: 56%;width: 43%;margin-top: 8%;z-index: 2;">
         <p style="display: none" id="tenspctsp">${motctsp.sanPham.ten}</p>
-        <label style="font-weight: bold" class="lb">Màu sắc</label>
+
+        <label style="" >Màu sắc: </label>
+
         <c:forEach items="${banhangonline.ListctspTheoidsp(motctsp.sanPham.id)}" var="ht1" varStatus="stt1">
 
             <c:if test="${stt1.index==0}">
@@ -467,7 +473,7 @@
                     <input type="radio" id="ms${stt1.index}" name="mauSac1"
                            value="${ht1.mauSac.ten}" ${ht1.mauSac.ten==motctsp.mauSac.ten ?"checked":""}
                            onchange="clickradio2lan();">
-                    <label for="ms${stt1.index}" style="border: 1px solid #00A000">${ht1.mauSac.ten}</label>
+                    <label for="ms${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.mauSac.ten}</label>
                 </c:if>
             </c:if>
 
@@ -486,7 +492,7 @@
                         <input type="radio" id="ms${stt1.index}" name="mauSac1"
                                value="${ht1.mauSac.ten}" ${ht1.mauSac.ten==motctsp.mauSac.ten ?"checked":""}
                                onchange="clickradio2lan();">
-                        <label for="ms${stt1.index}" style="border: 1px solid #00A000">${ht1.mauSac.ten}</label>
+                        <label for="ms${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.mauSac.ten}</label>
 
                     </c:if>
                     <c:set var="checkck" scope="session" value="${-1}"/>
@@ -496,7 +502,7 @@
         </c:forEach>
         <br>
         <br>
-        <label style="font-weight: bold" class="lb">Rom</label>
+        <label >Rom: </label>
         <c:forEach items="${banhangonline.ListctspTheoidsp(motctsp.sanPham.id)}" var="ht1" varStatus="stt1">
 
             <c:if test="${stt1.index==0}">
@@ -504,7 +510,7 @@
                     <input type="radio" id="rom${stt1.index}" name="rom1"
                            value="${ht1.rom.dungLuong}" ${ht1.rom.dungLuong==motctsp.rom.dungLuong ?"checked":""}
                            onchange="clickradio2lan();">
-                    <label for="rom${stt1.index}" style="border: 1px solid #00A000">${ht1.rom.dungLuong}</label>
+                    <label for="rom${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.rom.dungLuong}</label>
                 </c:if>
             </c:if>
 
@@ -523,7 +529,7 @@
                         <input type="radio" id="rom${stt1.index}" name="rom1"
                                value="${ht1.rom.dungLuong}" ${ht1.rom.dungLuong==motctsp.rom.dungLuong ?"checked":""}
                                onchange="clickradio2lan();">
-                        <label for="rom${stt1.index}" style="border: 1px solid #00A000">${ht1.rom.dungLuong}</label>
+                        <label for="rom${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.rom.dungLuong}</label>
                     </c:if>
                     <c:set var="checkck" scope="session" value="${-1}"/>
                 </c:if>
@@ -531,14 +537,14 @@
         </c:forEach>
         <br>
         <br>
-        <label style="font-weight: bold" class="lb">Ram</label>
+        <label >Ram: </label>
         <c:forEach items="${banhangonline.ListctspTheoidsp(motctsp.sanPham.id)}" var="ht1" varStatus="stt1">
             <c:if test="${stt1.index==0}">
                 <c:if test="${banhangonline.soluongcon(ht1.id)>0}">
                     <input type="radio" id="ram${stt1.index}" name="ram1"
                            value="${ht1.ram.dungLuong}" ${ht1.ram.dungLuong==motctsp.ram.dungLuong ?"checked":""}
                            onchange="clickradio2lan();">
-                    <label for="ram${stt1.index}" style="border: 1px solid #00A000">${ht1.ram.dungLuong}</label>
+                    <label for="ram${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.ram.dungLuong}</label>
                 </c:if>
             </c:if>
             <c:if test="${stt1.index>0}">
@@ -556,7 +562,7 @@
                         <input type="radio" id="ram${stt1.index}" name="ram1"
                                value="${ht1.ram.dungLuong}" ${ht1.ram.dungLuong==motctsp.ram.dungLuong ?"checked":""}
                                onchange="clickradio2lan();">
-                        <label for="ram${stt1.index}" style="border: 1px solid #00A000">${ht1.ram.dungLuong}</label>
+                        <label for="ram${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.ram.dungLuong}</label>
                     </c:if>
                     <c:set var="checkck" scope="session" value="${-1}"/>
                 </c:if>
@@ -565,14 +571,14 @@
         </c:forEach>
         <br>
         <br>
-        <label style="font-weight: bold" class="lb">Chip</label>
+        <label >Chip: </label>
         <c:forEach items="${banhangonline.ListctspTheoidsp(motctsp.sanPham.id)}" var="ht1" varStatus="stt1">
             <c:if test="${stt1.index==0}">
                 <c:if test="${banhangonline.soluongcon(ht1.id)>0}">
                     <input type="radio" id="chip${stt1.index}" name="chip1"
                            value="${ht1.chip.ten}" ${ht1.chip.ten==motctsp.chip.ten ?"checked":""}
                            onchange="clickradio2lan();">
-                    <label for="chip${stt1.index}" style="border: 1px solid #00A000">${ht1.chip.ten}</label>
+                    <label for="chip${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.chip.ten}</label>
                 </c:if>
             </c:if>
             <c:if test="${stt1.index>0}">
@@ -590,7 +596,7 @@
                         <input type="radio" id="chip${stt1.index}" name="chip1"
                                value="${ht1.chip.ten}" ${ht1.chip.ten==motctsp.chip.ten ?"checked":""}
                                onchange="clickradio2lan();">
-                        <label for="chip${stt1.index}" style="border: 1px solid #00A000">${ht1.chip.ten}</label>
+                        <label for="chip${stt1.index}" style="border: 1px solid #00A000;margin-left:5px">${ht1.chip.ten}</label>
                     </c:if>
                     <c:set var="checkck" scope="session" value="${-1}"/>
                 </c:if>
@@ -620,17 +626,16 @@
                             </h4>
 
                         </div>
-                        <div class="add-to-cart" style="margin-top: 7cm">
-                            Số lượng :<label style="background: white;color: red;border: 1px solid white"
-                                             id="thongbaosoluong"></label>
-                            <br>
+                        <div class="add-to-cart" style="margin-top: 5cm">
+
                             <c:if test="${idkhachhang=='1'}">
                             <div class="qty-label">
-                                <div class="" style="margin-left: 1cm">
+                                <div class="" style="margin-left: 0cm">
 
-                                    <c:if test="${idkhachhang=='1'}">
+
+                                        <label>Số lượng :</label>
                                         <div class="qty-label">
-                                            <div class="" style="margin-left: 1cm">
+                                            <div class="" style="margin-left: 0cm">
                                                 <BUTTON class="qty-down">-</BUTTON>
                                                 <input type="number" value="1" min="1"
                                                        max="${banhangonline.soluongcon(motctsp.id)}" id="input2"
@@ -640,7 +645,9 @@
                                         </div>
                                         <label style="background: white;border: 1px solid white">Số lượng còn
                                             :${banhangonline.soluongcon(motctsp.id)}</label>
-                                        <br><br>
+                                        <br>
+                                    <label style="background: white;color: red;border: 1px solid white"
+                                           id="thongbaosoluong"></label><br>
                                         <a href="/login">
                                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào
                                                 giỏ hàng
@@ -652,16 +659,16 @@
                                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Mua ngay
                                             </button>
                                         </a>
-                                    </c:if>
+
                                 </div>
                             </div>
-                        </div>
-                        </c:if>
-                        <c:if test="${idkhachhang!='1'}">
-                            <form action="" method="post" id="formctsp">
+                         </c:if>
+                         <c:if test="${idkhachhang!='1'}">
 
+                            <form action="" method="post" id="formctsp">
+                                <label>Số lượng :</label>
                                 <div class="qty-label">
-                                    <div class="" style="margin-left: 1cm">
+                                    <div class="" style="margin-left: 0cm">
                                         <BUTTON class="qty-down" type="button">-</BUTTON>
                                         <input type="number" value="0" min="0"
                                                max="${banhangonline.soluongcon(motctsp.id)-banhangonline.sl1ctsptronggh(banhangonline.ListghTheoidkh(idkhachhang).get(0).getId(),motctsp.id)}"
@@ -673,8 +680,9 @@
 
                                 <label style="background: white;border: 1px solid white">Số lượng còn
                                     :${banhangonline.soluongcon(motctsp.id)}</label>
-                                <br><br>
-
+                                <br>
+                                <label style="background: white;color: red;border: 1px solid white"
+                                       id="thongbaosoluong"></label><br>
                                     <%--                            <p>${idkhachhang}----${motctsp.id}</p>--%>
                                 <button class="add-to-cart-btn" type="button"
                                         onclick="thongbaothemvaogiohang('${motctsp.id}');"><i
@@ -690,6 +698,8 @@
 
                             </form>
                         </c:if>
+
+
 
 
                     </div>
@@ -1361,7 +1371,7 @@
             input2.value = value + 1;
             document.getElementById('thongbaosoluong').innerHTML = "";
         } else {
-            document.getElementById('thongbaosoluong').innerHTML = "Số lượng sản phẩm này trong giỏ hàng  đã đạt mức tối đa";
+            document.getElementById('thongbaosoluong').innerHTML = "Số lượng sản phẩm này đã đạt mức tối đa để thêm  ";
         }
     });
 
@@ -1623,6 +1633,11 @@
         loadScript(0);
     }
 
+</script>
+<script>
+    function anbt() {
+        document.getElementById('taikhoancuatoi').click();
+    }
 </script>
 <!-- jQuery Plugins -->
 <!-- jQuery Plugins -->

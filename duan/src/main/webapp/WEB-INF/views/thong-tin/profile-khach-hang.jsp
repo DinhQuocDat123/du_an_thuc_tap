@@ -174,7 +174,103 @@
         }
 
     </style>
+        <style>
+            /* CSS cho modal */
+            #myModal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000; /* Đặt giá trị z-index lớn */
+            }
 
+            .modal-content {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            #myModal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000; /* Đặt giá trị z-index lớn */
+            }
+
+            .modal-content {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            /*div{*/
+            /*    border: 1px solid red;*/
+            /*}*/
+            .input-with-button {
+                display: flex; /* Sử dụng flexbox để căn chỉnh nút bên trong input */
+                border: 1px solid #ccc; /* Tạo đường viền xung quanh hộp tìm kiếm */
+                border-radius: 25px; /* Đặt bán kính tròn cho hộp tìm kiếm */
+                overflow: hidden; /* Loại bỏ nút nếu nó bị tràn ra ngoài hộp */
+            }
+
+            .input-with-button input {
+                flex: 1; /* Làm cho input mở rộng để lấp đầy hộp */
+                border: none; /* Loại bỏ đường viền của input */
+                padding: 10px; /* Đặt khoảng cách nội dung bên trong input */
+                outline: none; /* Loại bỏ đường viền khi focus vào input */
+            }
+
+            .input-with-button button {
+                background: #007bff; /* Màu nền của nút */
+                color: #fff; /* Màu chữ trắng */
+                border: none; /* Loại bỏ đường viền của nút */
+                padding: 10px 20px; /* Đặt khoảng cách nội dung bên trong nút */
+                cursor: pointer; /* Biến con trỏ thành bàn tay khi trỏ vào nút */
+            }
+
+            .cart-dropdown {
+                border-radius: 10px;
+                width: 180px;
+                background-color: #fff;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                padding: 10px;
+                margin-top: 10px;
+            }
+
+            .cart-dropdown a {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                text-decoration: none;
+                text-align: center;
+                color: #fff;
+                background-color: #007bff;
+                margin-bottom: 10px;
+            }
+
+            .cart-dropdown a:hover {
+                background-color: #0056b3;
+            }
+
+            /*div{*/
+            /*    border: 1px solid red;*/
+            /*}*/
+        </style>
 </head>
 <body>
 
@@ -212,16 +308,20 @@
                                  style="border-radius: 10px;width: 3.5cm;margin-top: 10px;width: 180px">
                                 <div>
                                     <div>
-                                        <form action="/thong-tin-ca-nhan-khach-hang" method="post">
+                                        <form action="/thong-tin-ca-nhan-khach-hang" method="post" style="display: none">
                                             <input value="${idkhachhang}" name="idKhachHang" style="display: none">
-                                            <button class="btn btn-primary" type="submit">Tài khoản của tôi</button>
+                                            <button style="" class="btn btn-primary" type="submit" id="taikhoancuatoi">Tài khoản của tôi</button>
                                         </form>
-                                            <%--                                          <a href="" class="btn btn-primary" type="submit" onclick="submitForm1()">Tài khoản của tôi</a>--%>
+                                        <a  class="btn btn-primary" type="submit" onclick="anbt()">Tài khoản của tôi</a>
 
                                     </div>
+
                                     <div>
                                         <a href="/ban-hang-online/hoa-don-online/${idkhachhang}"
                                            class="btn btn-primary">Đơn hàng</a>
+                                    </div>
+                                    <div>
+                                        <a href="/doi-tra/chinh-sach-doi-tra" class="btn btn-primary" style="" onclick="">Chính sách đổi trả</a>
                                     </div>
                                     <div>
                                         <a href="/logout" class="btn btn-primary" style="" onclick="">Đăng xuất</a>
@@ -262,7 +362,6 @@
                         </form>
                     </div>
                 </div>
-                <!-- /SEARCH BAR -->
 
                 <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
@@ -1025,7 +1124,11 @@
         });
     });
 </script>
-
+<script>
+    function anbt() {
+        document.getElementById('taikhoancuatoi').click();
+    }
+</script>
 <!-- jQuery Plugins -->
 <script src="/jsbanhang/jquery.min.js"></script>
 <script src="/jsbanhang/bootstrap.min.js"></script>

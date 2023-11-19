@@ -54,7 +54,7 @@
                     </form>
                     <%--           kết thúc tìm kiếm         --%>
                     <div class="table-responsive">
-                        <table  style="color: black" id="example" class="display">
+                        <table  style="color: black; width: 1400px;"  id="example" class="display">
                             <thead>
                             <tr>
                                 <th scope="col">Mã</th>

@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.DTO.Top10SanPham;
 import com.example.demo.models.*;
 import com.example.demo.repositories.BanHangOnLinerepository;
 import com.example.demo.viewmodels.TongtienvsTongspchon;
@@ -13,6 +14,8 @@ import java.util.UUID;
 public interface BanHangOnlineService {
     Integer tonggiamgia( String idctsp);
     List<ChiTietSanPham> ctspbanhang();
+    List<Top10SanPham> top10SanPhamBanChay();
+
     Integer soluongcon( String idctsp);
     Integer soluongdaban( String idctsp);
     List<ChiTietSanPham> locbanhang(String idHang,

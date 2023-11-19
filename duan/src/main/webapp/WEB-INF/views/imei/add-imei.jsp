@@ -45,13 +45,15 @@
                                 <div class="row">
                                     <div class="col-11">
                                         <form:select path="chiTietSanPham" class="form-control"
-                                                     cssStyle="font-weight: bold; width: 100%" id="selectSanPham">
+                                                     cssStyle="font-weight: bold; width: 100%" id="selectSanPham" onchange="validateSelect()">
                                             <option selected disabled>Sản phẩm</option>
                                             <c:forEach items="${listCTSP}" var="ctsp">
                                                 <option value="${ctsp.id}">${ctsp.sanPham.ten} - ${ctsp.mauSac.ten}
                                                     - ${ctsp.ram.dungLuong}- ${ctsp.rom.dungLuong}</option>
                                             </c:forEach>
                                         </form:select>
+
+                                        <span class="text-danger">${tb}</span>
                                     </div>
                                     <div class="col-1">
                                         <a type="button" href="/chi-tiet-san-pham/view-add">
@@ -91,4 +93,19 @@
     </div>
 </div>
 </body>
+<script>
+    function validateSelect() {
+        var selectElement = document.getElementById("selectSanPham");
+        var selectedValue = selectElement.value;
+
+        if (selectedValue === null || selectedValue === '' || selectedValue === 'Sản phẩm') {
+            alert("Vui lòng chọn một sản phẩm!");
+            // Thực hiện xử lý validate ở đây, có thể hiển thị thông báo lỗi hoặc thực hiện các hành động khác.
+            return false; // Ngăn chặn form submit hoặc các hành động khác nếu không hợp lệ
+        } else {
+            // Sản phẩm đã được chọn, không có lỗi
+            return true; // Có thể submit form hoặc thực hiện hành động khác
+        }
+    }
+</script>
 </html>

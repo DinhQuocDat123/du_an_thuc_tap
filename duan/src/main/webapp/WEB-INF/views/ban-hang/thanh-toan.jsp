@@ -149,10 +149,10 @@
                                                 </div>
                                                 <br>
                                                 <div class="row">
-                                                    <div class="col-md-12" style="text-align: center">
-                                                        <button type="submit" class="btn btn-primary"
-                                                                onclick="return myFunction4()">Thanh Toán
-                                                        </button>
+                                                    <div class="buttons">
+                                                        <div class="col-md-12" style="text-align: center">
+                                                            <button id="success" type="submit" class="btn">Thanh Toán</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>

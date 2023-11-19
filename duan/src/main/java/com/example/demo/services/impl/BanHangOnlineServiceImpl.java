@@ -1,5 +1,6 @@
 package com.example.demo.services.impl;
 
+import com.example.demo.DTO.Top10SanPham;
 import com.example.demo.models.*;
 import com.example.demo.repositories.BanHangOnLinerepository;
 import com.example.demo.services.BanHangOnlineService;
@@ -32,6 +33,11 @@ public class BanHangOnlineServiceImpl implements BanHangOnlineService {
     @Override
     public List<ChiTietSanPham> ctspbanhang() {
         return banHangOnLinerepository.ctspbanhang();
+    }
+
+    @Override
+    public List<Top10SanPham> top10SanPhamBanChay() {
+        return banHangOnLinerepository.top10SanPhamBanChay();
     }
 
     @Override

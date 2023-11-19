@@ -68,7 +68,7 @@
                     </form>
                     <%--           kết thúc tìm kiếm         --%>
                     <div class="table-responsive">
-                        <table id="example" class="display" style="color: black">
+                        <table id="example" class="display" style="color: black; width: 1400px;">
                             <thead>
                             <tr>
                                 <th scope="col">Mã</th>

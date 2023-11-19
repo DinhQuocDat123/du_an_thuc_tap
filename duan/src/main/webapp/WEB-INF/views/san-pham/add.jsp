@@ -155,6 +155,7 @@
                                                             <form:options items="${listAnh}" itemLabel="ten"
                                                                           itemValue="id"/>
                                                         </form:select>
+                                                        <span class="text-danger">${errorAnh}</span>
                                                     </div>
                                                     <div class="col-1">
                                                         <a type="button" data-bs-toggle="modal"
@@ -183,6 +184,7 @@
                                                             <form:options items="${listHangSP}" itemLabel="ten"
                                                                           itemValue="id"/>
                                                         </form:select>
+                                                        <span class="text-danger">${errorHang}</span>
                                                     </div>
                                                     <div class="col-1">
                                                         <a type="button" data-bs-toggle="modal"
@@ -212,6 +214,7 @@
                                                             <form:options items="${listManHinh}" itemLabel="thongSo"
                                                                           itemValue="id"/>
                                                         </form:select>
+                                                        <span class="text-danger">${errorManHinh}</span>
                                                     </div>
                                                     <div class="col-1">
                                                         <a type="button" data-bs-toggle="modal"
@@ -238,6 +241,7 @@
                                                             <form:options items="${listCamera}" itemLabel="thongSo"
                                                                           itemValue="id"/>
                                                         </form:select>
+                                                        <span class="text-danger">${errorCamera}</span>
                                                     </div>
                                                     <div class="col-1">
                                                         <a type="button" data-bs-toggle="modal"

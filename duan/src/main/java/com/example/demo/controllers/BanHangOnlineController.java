@@ -130,6 +130,7 @@ public class BanHangOnlineController {
         model.addAttribute("giamgia", banHangOnlineService);
         model.addAttribute("banhangonline", banHangOnlineService);
         model.addAttribute("listsp", banHangOnlineService.ctspbanhang());
+        model.addAttribute("listTop10sp", banHangOnlineService.top10SanPhamBanChay());
         idkhachhang = "1";
         model.addAttribute("idkhachhang", idkhachhang);
         return "ban-hang-online/trang-chu";
@@ -1128,6 +1129,8 @@ public class BanHangOnlineController {
     }
 
 
+
+
 //@Scheduled(cron = "0 35 18 30 9 *")
 //public void  inlinhtinh(){
 //////         0 giây.
@@ -1164,6 +1167,46 @@ public class BanHangOnlineController {
 //        }
 //
 //    };
+
+
+    //THÔNG TIN VỀ CHÍNH SÁCH ĐỔI TRẢ, LINK NÀY DẪN SANG CHÍNH SÁCH ĐỔI TRẢ
+    @GetMapping("/doi-tra/chinh-sach-doi-tra")
+    public String chinhSachDoiTra(
+            Model model
+    ) {
+        double tong = 0;
+        Integer lamchon = 0;
+        for (ChiTietSanPham ct : banHangOnlineService.ctspbanhang()) {
+            if (banHangOnlineService.soluongcon(String.valueOf(ct.getId())) > 0) {
+                tong = tong + 1;
+                lamchon = lamchon + 1;
+            }
+        }
+        double tb = tong / 3;
+        lamchon = lamchon / 3;
+        if (tb % 1 > 0) {
+            lamchon = lamchon + 1;
+        }
+        model.addAttribute("lamchon", lamchon);
+        model.addAttribute("giamgia", banHangOnlineService);
+        model.addAttribute("banhangonline", banHangOnlineService);
+
+
+        model.addAttribute("listsp", banHangOnlineService.ctspbanhang());
+
+
+//        giohang
+        model.addAttribute("tttong", 1);
+        if (idkhachhang.equals("1")) {
+            return "redirect:/";
+        } else {
+            model.addAttribute("idkhachhang", UUID.fromString(idkhachhang));
+            model.addAttribute("khachhangdangnhap", khachHangService.findById(UUID.fromString(idkhachhang)));
+            model.addAttribute("listghct", banHangOnlineService.ListghctTheoidgh(banHangOnlineService.ListghTheoidkh(idkhachhang).get(0).getId()));
+            return "doitra/chinh-sach-doi-tra";
+        }
+
+    }
 
 
 }

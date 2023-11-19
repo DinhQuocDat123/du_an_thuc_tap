@@ -138,7 +138,7 @@ public class ChiTietSanPhamController {
     public String add(@Valid @ModelAttribute(name = "chitietsanpham") ChiTietSanPham chiTietSanPham,
                       BindingResult result, Model model, @RequestParam("images") MultipartFile multipartFile) throws IOException {
 
-        if (result.hasErrors()) {
+        if (result.hasErrors()||chiTietSanPham.getSanPham()==null) {
 
 
             model.addAttribute("Pin", new Pin());
@@ -159,6 +159,137 @@ public class ChiTietSanPhamController {
             model.addAttribute("listPin", pinService.findAll0());
             model.addAttribute("listManHinh", manHinhService.findAll0());
             model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("errorSanPham", "Hãy chọn sản phẩm!");
+            model.addAttribute("contentPage", "../chi-tiet-san-pham/add-chi-tiet-san-pham.jsp");
+
+            return "home/layout";
+        }
+        if (result.hasErrors()||chiTietSanPham.getChip()==null) {
+
+
+            model.addAttribute("Pin", new Pin());
+            model.addAttribute("chip", new Chip());
+            model.addAttribute("ram", new Ram());
+            model.addAttribute("rom", new Rom());
+            model.addAttribute("sanPham", new SanPham());
+            model.addAttribute("mauSac", new MauSac());
+
+
+            model.addAttribute("listSanPham", sanPhamService.findAll0());
+            model.addAttribute("listMauSac", mauSacService.findAll0());
+            model.addAttribute("listChip", chipService.findAll0());
+            model.addAttribute("listRam", ramService.findAll0());
+            model.addAttribute("listRom", romService.findAll0());
+            model.addAttribute("listHang", hangSanPhamService.findAll0());
+            model.addAttribute("dungLuongPin", dungLuongPinService.findAll0());
+            model.addAttribute("listPin", pinService.findAll0());
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("errorChip", "Hãy chọn Chip!");
+            model.addAttribute("contentPage", "../chi-tiet-san-pham/add-chi-tiet-san-pham.jsp");
+
+            return "home/layout";
+        }
+        if (result.hasErrors()||chiTietSanPham.getRom()==null) {
+
+
+            model.addAttribute("Pin", new Pin());
+            model.addAttribute("chip", new Chip());
+            model.addAttribute("ram", new Ram());
+            model.addAttribute("rom", new Rom());
+            model.addAttribute("sanPham", new SanPham());
+            model.addAttribute("mauSac", new MauSac());
+
+
+            model.addAttribute("listSanPham", sanPhamService.findAll0());
+            model.addAttribute("listMauSac", mauSacService.findAll0());
+            model.addAttribute("listChip", chipService.findAll0());
+            model.addAttribute("listRam", ramService.findAll0());
+            model.addAttribute("listRom", romService.findAll0());
+            model.addAttribute("listHang", hangSanPhamService.findAll0());
+            model.addAttribute("dungLuongPin", dungLuongPinService.findAll0());
+            model.addAttribute("listPin", pinService.findAll0());
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("errorRom", "Hãy chọn Rom!");
+            model.addAttribute("contentPage", "../chi-tiet-san-pham/add-chi-tiet-san-pham.jsp");
+
+            return "home/layout";
+        }
+        if (result.hasErrors()||chiTietSanPham.getMauSac()==null) {
+
+
+            model.addAttribute("Pin", new Pin());
+            model.addAttribute("chip", new Chip());
+            model.addAttribute("ram", new Ram());
+            model.addAttribute("rom", new Rom());
+            model.addAttribute("sanPham", new SanPham());
+            model.addAttribute("mauSac", new MauSac());
+
+
+            model.addAttribute("listSanPham", sanPhamService.findAll0());
+            model.addAttribute("listMauSac", mauSacService.findAll0());
+            model.addAttribute("listChip", chipService.findAll0());
+            model.addAttribute("listRam", ramService.findAll0());
+            model.addAttribute("listRom", romService.findAll0());
+            model.addAttribute("listHang", hangSanPhamService.findAll0());
+            model.addAttribute("dungLuongPin", dungLuongPinService.findAll0());
+            model.addAttribute("listPin", pinService.findAll0());
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("errorMauSac", "Hãy chọn Màu sắc!");
+            model.addAttribute("contentPage", "../chi-tiet-san-pham/add-chi-tiet-san-pham.jsp");
+
+            return "home/layout";
+        }
+        if (result.hasErrors()||chiTietSanPham.getRam()==null) {
+
+
+            model.addAttribute("Pin", new Pin());
+            model.addAttribute("chip", new Chip());
+            model.addAttribute("ram", new Ram());
+            model.addAttribute("rom", new Rom());
+            model.addAttribute("sanPham", new SanPham());
+            model.addAttribute("mauSac", new MauSac());
+
+
+            model.addAttribute("listSanPham", sanPhamService.findAll0());
+            model.addAttribute("listMauSac", mauSacService.findAll0());
+            model.addAttribute("listChip", chipService.findAll0());
+            model.addAttribute("listRam", ramService.findAll0());
+            model.addAttribute("listRom", romService.findAll0());
+            model.addAttribute("listHang", hangSanPhamService.findAll0());
+            model.addAttribute("dungLuongPin", dungLuongPinService.findAll0());
+            model.addAttribute("listPin", pinService.findAll0());
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("errorRam", "Hãy chọn Ram!");
+            model.addAttribute("contentPage", "../chi-tiet-san-pham/add-chi-tiet-san-pham.jsp");
+
+            return "home/layout";
+        }
+        if (result.hasErrors()||chiTietSanPham.getPin()==null) {
+
+
+            model.addAttribute("Pin", new Pin());
+            model.addAttribute("chip", new Chip());
+            model.addAttribute("ram", new Ram());
+            model.addAttribute("rom", new Rom());
+            model.addAttribute("sanPham", new SanPham());
+            model.addAttribute("mauSac", new MauSac());
+
+
+            model.addAttribute("listSanPham", sanPhamService.findAll0());
+            model.addAttribute("listMauSac", mauSacService.findAll0());
+            model.addAttribute("listChip", chipService.findAll0());
+            model.addAttribute("listRam", ramService.findAll0());
+            model.addAttribute("listRom", romService.findAll0());
+            model.addAttribute("listHang", hangSanPhamService.findAll0());
+            model.addAttribute("dungLuongPin", dungLuongPinService.findAll0());
+            model.addAttribute("listPin", pinService.findAll0());
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("errorPin", "Hãy chọn Pin!");
             model.addAttribute("contentPage", "../chi-tiet-san-pham/add-chi-tiet-san-pham.jsp");
 
             return "home/layout";

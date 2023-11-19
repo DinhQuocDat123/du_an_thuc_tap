@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import com.example.demo.DTO.Top10SanPham;
 import com.example.demo.models.*;
 import com.example.demo.viewmodels.KhachHangLSMuaHang;
 import com.example.demo.viewmodels.TongtienvsTongspchon;
@@ -37,9 +38,25 @@ public interface BanHangOnLinerepository extends JpaRepository<KhachHang, UUID> 
             "SELECT CAST(@bienb AS int);", nativeQuery = true)
     Integer tonggiamgia(UUID idctsp);
 
-    @Query("select ct from SanPham sp left join ChiTietSanPham ct on sp.id=ct.sanPham.id where sp.tinhTrang=0 and ct.tinhTrang=0")
+    @Query("select ct from SanPham sp left join ChiTietSanPham ct on sp.id=ct.sanPham.id where sp.tinhTrang=0 and ct.tinhTrang=0 order by sp.ngayTao desc")
     List<ChiTietSanPham> ctspbanhang();
 
+    @Query(value = "SELECT TOP 10\n" +
+            "    san_pham.ten,\n" +
+            "    COUNT(imei.id) AS so_luong_ban\n" +
+            "FROM hoa_don\n" +
+            "LEFT JOIN hoa_don_chi_tiet ON hoa_don.id = hoa_don_chi_tiet.id_hoa_don\n" +
+            "LEFT JOIN imei ON imei.id = hoa_don_chi_tiet.id_imei\n" +
+            "LEFT JOIN chi_tiet_san_pham ON chi_tiet_san_pham.id = imei.id_chi_tiet_san_pham\n" +
+            "LEFT JOIN san_pham ON san_pham.id = chi_tiet_san_pham.id_san_pham\n" +
+            "WHERE hoa_don.tinh_trang = 2\n" +
+            "GROUP BY san_pham.id, san_pham.ten\n" +
+            "ORDER BY so_luong_ban DESC;", nativeQuery = true)
+    List<Top10SanPham> top10SanPhamBanChay();
+
+
+//    @Query("select ct from SanPham sp left join ChiTietSanPham ct on sp.id=ct.sanPham.id where sp.tinhTrang=0 and ct.tinhTrang=0 ")
+//    List<ChiTietSanPham> ctspbanhangBanChay();
 
 
     @Transactional
@@ -77,7 +94,7 @@ public interface BanHangOnLinerepository extends JpaRepository<KhachHang, UUID> 
             "AND (:moTaMan = 'null' OR manHinh.thongSo = :moTaMan) " +
             "AND (:moTaCam = 'null' OR cam.thongSo = :moTaCam) " +
             "AND (:moTaMau = 'null' OR ms.ten = :moTaMau) " +
-            "AND (:tenSP = 'null' OR sp.ten = :tenSP) "+
+            "AND (:tenSP = 'null' OR sp.ten = :tenSP) " +
             "AND (ct.tinhTrang=0) "
     )
     List<ChiTietSanPham> locbanhang(@Param("idHang") String idHang,
@@ -113,7 +130,7 @@ public interface BanHangOnLinerepository extends JpaRepository<KhachHang, UUID> 
             "AND (:moTaCam = 'null' OR cam.thongSo = :moTaCam) " +
             "AND (:moTaMau = 'null' OR ms.ten = :moTaMau) " +
             "AND (:tenSP = 'null' OR sp.ten = :tenSP) " +
-            "AND (ct.giaBan >= :tienMin AND ct.giaBan <= :tienMax)"+
+            "AND (ct.giaBan >= :tienMin AND ct.giaBan <= :tienMax)" +
             "AND (ct.tinhTrang=0) "
     )
     List<ChiTietSanPham> locbanhangcoGIATIEN(@Param("idHang") String idHang,
@@ -137,7 +154,7 @@ public interface BanHangOnLinerepository extends JpaRepository<KhachHang, UUID> 
 
 
     @Transactional
-    @Query(value="DECLARE @bienb int;\n" +
+    @Query(value = "DECLARE @bienb int;\n" +
             "set @bienb=(\n" +
             "select sum (so_luong) from gio_hang_chi_tiet \n" +
             "where id_gio_hang=:idgh and id_chi_tiet_san_pham=:idctsp\n" +
@@ -147,24 +164,24 @@ public interface BanHangOnLinerepository extends JpaRepository<KhachHang, UUID> 
             "set @bienb=0;\n" +
             "end\n" +
             "SELECT CAST(@bienb AS int); ", nativeQuery = true)
-    Integer sl1ctsptronggh(@Param("idgh") UUID idgh,@Param("idctsp") UUID idctsp);
+    Integer sl1ctsptronggh(@Param("idgh") UUID idgh, @Param("idctsp") UUID idctsp);
 
     @Query("select ghct from  GioHangChiTiet ghct where ghct.gioHang.id=:idgh ")
     List<GioHangChiTiet> ListghctTheoidgh(@Param("idgh") UUID idgh);
 
     @Query("select ghct from  GioHangChiTiet ghct where ghct.gioHang.id=:idgh and ghct.chiTietSanPham.id=:idctsp ")
-    List<GioHangChiTiet> ListghctTheoIdghvsIdctsp(@Param("idgh") UUID idgh,@Param("idctsp") UUID idctsp);
+    List<GioHangChiTiet> ListghctTheoIdghvsIdctsp(@Param("idgh") UUID idgh, @Param("idctsp") UUID idctsp);
 
     @Query(value = "select sum(so_luong*don_gia_khi_giam) as tongtien,\n" +
             "COUNT(id) as tongsanphamchon  from\n" +
             "gio_hang_chi_tiet \n" +
-            "where tinh_trang=0 and id_gio_hang=:idgh",nativeQuery = true)
+            "where tinh_trang=0 and id_gio_hang=:idgh", nativeQuery = true)
     TongtienvsTongspchon TongtienvsTongspchon(@Param("idgh") UUID idgh);
 
     @Transactional
     @Modifying
     @Query(value = "update gio_hang_chi_tiet set tinh_trang=:trangthai where id_gio_hang=:idgh", nativeQuery = true)
-    void trangthaighct(@Param("trangthai") Integer trangthai,@Param("idgh") UUID idgh);
+    void trangthaighct(@Param("trangthai") Integer trangthai, @Param("idgh") UUID idgh);
 
     @Query("select ghct from  GioHangChiTiet ghct where ghct.gioHang.id=:idgh and  ghct.tinhTrang=0")
     List<GioHangChiTiet> ListghTheoidghvsTT1(@Param("idgh") UUID idgh);
@@ -190,7 +207,7 @@ public interface BanHangOnLinerepository extends JpaRepository<KhachHang, UUID> 
     List<HoaDonChiTiet> timhoadonchitiettheoidhd(@Param("idhd") UUID idhd);
 
     @Query("select hdct from  HoaDonChiTiet hdct where hdct.hoaDon.id=:idhd and hdct.imei.chiTietSanPham.id=:idctsp ")
-    List<HoaDonChiTiet> listIMEItheoIDHDvsIDCTSP(@Param("idhd") UUID idhd,@Param("idctsp") UUID idctsp);
+    List<HoaDonChiTiet> listIMEItheoIDHDvsIDCTSP(@Param("idhd") UUID idhd, @Param("idctsp") UUID idctsp);
 
     @Transactional
     @Modifying
@@ -211,12 +228,12 @@ public interface BanHangOnLinerepository extends JpaRepository<KhachHang, UUID> 
     @Transactional
     @Modifying
     @Query(value = "update IMEI  im set  im.tinhTrang=0 where  im.id in (select hdct.imei.id from  HoaDonChiTiet hdct where hdct.hoaDon.id=:idhd and hdct.imei.chiTietSanPham.id=:idctsp)")
-    void updateimeiTTveOtheoIDHDvsIDCTSP(@Param("idhd") UUID idhd,@Param("idctsp") UUID idctsp);
+    void updateimeiTTveOtheoIDHDvsIDCTSP(@Param("idhd") UUID idhd, @Param("idctsp") UUID idctsp);
 
     @Transactional
     @Modifying
-    @Query(value ="delete from  HoaDonChiTiet hdct where hdct.id in (select hdct.id from  HoaDonChiTiet hdct where hdct.hoaDon.id=:idhd and hdct.imei.chiTietSanPham.id=:idctsp)")
-    void XoahdcttheoIDHDvsIDCTSP(@Param("idhd") UUID idhd,@Param("idctsp") UUID idctsp);
+    @Query(value = "delete from  HoaDonChiTiet hdct where hdct.id in (select hdct.id from  HoaDonChiTiet hdct where hdct.hoaDon.id=:idhd and hdct.imei.chiTietSanPham.id=:idctsp)")
+    void XoahdcttheoIDHDvsIDCTSP(@Param("idhd") UUID idhd, @Param("idctsp") UUID idctsp);
 
 
 }

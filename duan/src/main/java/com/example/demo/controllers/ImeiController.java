@@ -139,11 +139,12 @@ public class ImeiController {
     public String add(@Valid @ModelAttribute(name = "imei") IMEI imei,
                       BindingResult result, Model model) throws IOException, WriterException {
 
-        if (result.hasErrors()) {
+        if (result.hasErrors()||imei.getChiTietSanPham()==null) {
 
             model.addAttribute("listCTSP", chiTietSanPhamService.findAll0());
             String ma = "IMEI" + imeiService.findAll().size();
             model.addAttribute("ma", ma);
+            model.addAttribute("tb", "Hãy chọn sản phẩm!");
             model.addAttribute("contentPage", "../imei/add-imei.jsp");
             return "home/layout";
 

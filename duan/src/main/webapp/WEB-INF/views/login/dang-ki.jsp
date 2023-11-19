@@ -24,7 +24,7 @@
     <!-- Favicon icon -->
 </head>
 <body>
-<section class="vh-100" style="background-color: #bccff9;">
+<section class="vh-130" style="background-color: #bccff9;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-7">
@@ -34,10 +34,12 @@
                             <div class="card-body p-4 p-lg-5 text-black">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng ký tài khoản</h3>
+                                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng ký tài
+                                            khoản</h3>
                                     </div>
                                     <div class="col-12">
-                                        <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Nếu đã có tài khoản bạn có thể
+                                        <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Nếu đã có tài khoản
+                                            bạn có thể
                                             <a class="small text-muted" href="/login"
                                                style="font-size: large"><p style="color: red">Đăng nhập tại đây</p></a>
                                         </h4>
@@ -119,7 +121,8 @@
                                                                 <div class="col-sm-9">
                                                                     <form:input class="form-control" placeholder=""
                                                                                 path="taiKhoan" id="taiKhoanKhachHang"/>
-                                                                    <label id="taiKhoan1" style="color: red">${thongBao}</label>
+                                                                    <label id="taiKhoan1"
+                                                                           style="color: red">${thongBao}</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -129,9 +132,25 @@
                                                                             path="matKhau"
                                                                             for="tkkh">Mật Khẩu:</form:label>
                                                                 <div class="col-sm-9">
-                                                                    <form:input class="form-control" placeholder=""
-                                                                                path="matKhau" id="matKhauKhachHang"/>
-                                                                    <label id="matKhau1" style="color: red"></label>
+                                                                    <div class="row">
+                                                                        <div class="col-9">
+                                                                            <form:input class="form-control"
+                                                                                        placeholder="********"
+                                                                                        path="matKhau"
+                                                                                        id="matKhauKhachHang"
+                                                                                        type="password"/>
+                                                                            <label id="matKhau1"
+                                                                                   style="color: red"></label>
+                                                                        </div>
+                                                                        <div class="col-3">
+                                                                            <label style="margin: 7px"
+                                                                                   class="password-toggle"
+                                                                                   id="old-password-toggle"
+                                                                                   onclick="togglePassword1()">
+                                                                                Show
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -162,6 +181,19 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script>
+    const oldpasswordInput = document.getElementById('matKhauKhachHang');
+    const oldpasswordToggle = document.getElementById('old-password-toggle');
+
+    function togglePassword1() {
+        if (oldpasswordInput.type === 'password') {
+            oldpasswordInput.type = 'text';
+            oldpasswordToggle.innerText = 'Hide';
+        } else {
+            oldpasswordInput.type = 'password';
+            oldpasswordToggle.innerText = 'Show';
+        }
+    };
+
     function validate() {
         var un = document.getElementById("username").value;
         var pw = document.getElementById("password").value;

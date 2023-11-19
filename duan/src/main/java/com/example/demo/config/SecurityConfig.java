@@ -51,14 +51,14 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/","/dang-ky-tai-khoan","/login/dang-ky-tai-khoan","/login/quen-mat-khau","/quen-mat-khau", "/WEB-INF/**", "/lgin", "/logout", "/ban-hang-online/**", "/css/**", "/cssbanhang/**"
                         , "/documentation/**", "/icons/**", "/images/**", "/inHoaDon/**", "/js/**", "/jsbanhang/**", "/maqr/**", "/scss/**"
-                        , "uploads/**", "/vendor/**").permitAll()
+                        , "uploads/**", "/vendor/**","/ghn").permitAll()
                 .requestMatchers("/favicon.ico").permitAll()
                 //ca admin ca nhan vien
                 .requestMatchers("/chi-tiet-san-pham/hien-thi", "/ban-hang/**", "/anh/hien-thi-delete"
                         , "/anh/search-0", "/anh/search-1", "/camera/hien-thi", "/camera/hien-thi-delete", "/camera/search-0", "/camera/search-1",
                         "/chip/hien-thi", "/chip/hien-thi-delete", "/chip/search-0", "/chip/search-1",
                         "/chi-tiet-san-pham/hien-thi", "/chi-tiet-san-pham/hien-thi-da-xoa", "/chi-tiet-san-pham/loc", "/chi-tiet-san-pham/search-da-xoa","/chi-tiet-san-pham/export-excel",
-                        "/chi-tiet-san-pham/export-excel-chi-tiet-san-pham-ngung-kinh-doanh","/imei/export-excel","/imei/export-excel-imei-da-ban","/san-pham/export-excel",
+                        "/chi-tiet-san-pham/export-excel-chi-tiet-san-pham-ngung-kinh-doanh","/imei/show-qr/**","/imei/export-excel","/imei/export-excel-imei-da-ban","/san-pham/export-excel",
                         "/san-pham/export-excel-san-pham-da-ngung-kinh-doanh","/chi-tiet-san-pham/export-excel-chi-theo-hang/**",
                         "/chi-tiet-san-pham/export-excel-chi-theo-cam/**","/chi-tiet-san-pham/export-excel-chi-theo-ram/**","/chi-tiet-san-pham/export-excel-chi-theo-rom/**",
                         "/chi-tiet-san-pham/export-excel-chi-theo-pin/**","/chi-tiet-san-pham/export-excel-chi-theo-chip/**","/chi-tiet-san-pham/export-excel-chi-theo-man/**",

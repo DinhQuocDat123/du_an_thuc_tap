@@ -130,11 +130,39 @@ public class SanPhamController {
                       @ModelAttribute("camera") Camera camera,
                       @ModelAttribute("ManHinh") ManHinh manHinh,
                       @ModelAttribute("anh") Anh anh) {
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()||dulieuxem.getAnh()==null) {
             model.addAttribute("listManHinh", manHinhService.findAll0());
             model.addAttribute("listHangSP", hangSanPhamService.findAll0());
             model.addAttribute("listCamera", cameraService.findAll0());
             model.addAttribute("listAnh", anhService.findAll0());
+            model.addAttribute("errorAnh", "Hãy chọn ảnh!");
+            model.addAttribute("contentPage", "../san-pham/add.jsp");
+            return "home/layout";
+        }
+        if (bindingResult.hasErrors()||dulieuxem.getHangSanPham()==null) {
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listHangSP", hangSanPhamService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("listAnh", anhService.findAll0());
+            model.addAttribute("errorHang", "Hãy chọn hãng!");
+            model.addAttribute("contentPage", "../san-pham/add.jsp");
+            return "home/layout";
+        }
+        if (bindingResult.hasErrors()||dulieuxem.getManHinh()==null) {
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listHangSP", hangSanPhamService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("listAnh", anhService.findAll0());
+            model.addAttribute("errorManHinh", "Hãy chọn màn hình!");
+            model.addAttribute("contentPage", "../san-pham/add.jsp");
+            return "home/layout";
+        }
+        if (bindingResult.hasErrors()||dulieuxem.getCamera()==null) {
+            model.addAttribute("listManHinh", manHinhService.findAll0());
+            model.addAttribute("listHangSP", hangSanPhamService.findAll0());
+            model.addAttribute("listCamera", cameraService.findAll0());
+            model.addAttribute("listAnh", anhService.findAll0());
+            model.addAttribute("errorCamera", "Hãy chọn camera!");
             model.addAttribute("contentPage", "../san-pham/add.jsp");
             return "home/layout";
         }
@@ -148,11 +176,7 @@ public class SanPhamController {
 
     @PostMapping("/san-pham/update/{id}")
     public String update(Model model, @ModelAttribute("dulieuxem") @Valid SanPham dulieuxem,
-                         BindingResult bindingResult, @PathVariable("id") UUID id,
-                         @ModelAttribute("ManHinh") ManHinh manHinh,
-                         @ModelAttribute("hangSP") HangSanPham hangSanPham,
-                         @ModelAttribute("anh") Anh anh,
-                         @ModelAttribute("camera") Camera camera) {
+                         BindingResult bindingResult, @PathVariable("id") UUID id) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("contentPage", "../san-pham/update.jsp");
             return "home/layout";
